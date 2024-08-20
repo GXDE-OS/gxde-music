@@ -52,7 +52,7 @@ static QMap<QString, QByteArray> localeCodes;
 
 void MetaDetector::init()
 {
-    av_register_all();
+    //av_register_all();
     localeCodes.insert("zh_CN", "GB18030");
 }
 

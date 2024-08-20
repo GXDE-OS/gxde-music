@@ -26,6 +26,7 @@
 #include <QWheelEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QVBoxLayout>
+#include <QPainterPath>
 
 #include <DUtil>
 #include <dslider.h>

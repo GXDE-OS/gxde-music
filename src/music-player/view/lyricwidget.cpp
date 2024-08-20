@@ -34,6 +34,7 @@
 #include <QStringListModel>
 #include <QAbstractItemDelegate>
 #include <QLineEdit>
+#include <QPainterPath>
 
 #include <DThemeManager>
 

@@ -61,15 +61,15 @@ int main(int argc, char *argv[])
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
-    app.setOrganizationName("deepin");
-    app.setApplicationName("deepin-music");
+    app.setOrganizationName("GXDE");
+    app.setApplicationName("gxde-music");
     app.setApplicationVersion(DApplication::buildVersion("3.1"));
 
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
 
     QCommandLineParser parser;
-    parser.setApplicationDescription("Deepin music player.");
+    parser.setApplicationDescription("GXDE music player.");
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addPositionalArgument("file", "Music file path");
@@ -84,11 +84,11 @@ int main(int argc, char *argv[])
     app.loadTranslator();
 
     // !!! MUST setApplicationDisplayName before DMainWindow create
-    app.setApplicationDisplayName(QObject::tr("Deepin Music"));
-    app.setWindowIcon(QIcon(":/common/image/deepin-music.svg"));
+    app.setApplicationDisplayName(QObject::tr("GXDE Music"));
+    app.setWindowIcon(QIcon(":/common/image/gxde-music.svg"));
 
-    if (!app.setSingleInstance("deepinmusic")) {
-        qDebug() << "another deepin music has started";
+    if (!app.setSingleInstance("gxdemusic")) {
+        qDebug() << "another GXDE music has started";
         if (!toOpenFile.isEmpty()) {
             QFileInfo fi(toOpenFile);
             QUrl url = QUrl::fromLocalFile(fi.absoluteFilePath());

@@ -1,24 +1,25 @@
-Source: deepin-music
+Source: gxde-music
 Section: sound
 Priority: extra
-Maintainer: Deepin Packages Builder <packages@deepin.com>
+Maintainer: gfdgd xi <3025613752@qq.com>
 Build-Depends: debhelper,  python3, pkg-config, qttools5-dev-tools,
  libqt5svg5-dev, qtmultimedia5-dev,
  libtag1-dev, libicu-dev, libcue-dev,
  libavutil-dev, libavformat-dev, libavcodec-dev,
  libdtkwidget2-dev
 Standards-Version: 3.9.8
-Homepage: http://www.deepin.org/
+Homepage: https://gitee.com/GXDE-OS/gxde-music
 
-Package: deepin-music
+Package: gxde-music
 Architecture: any
+Replaces: deepin-music
 Depends: ${shlibs:Depends}, ${misc:Depends},
  gstreamer1.0-libav, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
  gstreamer1.0-plugins-bad, gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio,
  libqt5sql5-sqlite, libqt5multimedia5-plugins, gstreamer1.0-fluendo-mp3,
  gvfs
 Description: Awesome music player with brilliant and tweakful UI
- Deepin-UI based, gstreamer front-end, with features likes search music
+ GXDE-UI based, gstreamer front-end, with features likes search music
  by pinyin,quanpin, colorful lyrics supports, and more powerful
  functions you will found.
  .

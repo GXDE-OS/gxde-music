@@ -1,15 +1,15 @@
-name: deepin-music
+name: gxde-music
 version: '0.1'
-summary: deepin-music
+summary: gxde-music
 description: |
-  This is deepin-music snap application
+  This is gxde-music snap application
 
 grade: stable
 confinement: strict
 
 apps:
-  deepin-music:
-    command: desktop-launch $SNAP/usr/bin/deepin-music
+  gxde-music:
+    command: desktop-launch $SNAP/usr/bin/gxde-music
     plugs:
       - network
       - unity7

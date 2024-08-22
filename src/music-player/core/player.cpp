@@ -390,8 +390,8 @@ void Player::playMeta(PlaylistPtr playlist, const MetaPtr meta)
     d->activePlaylist->play(meta);
 
     DRecentData data;
-    data.appName = "Deepin Music";
-    data.appExec = "deepin-music";
+    data.appName = "GXDE Music";
+    data.appExec = "gxde-music";
     DRecentManager::addItem(meta->localPath, data);
 
     Q_EMIT mediaPlayed(d->activePlaylist, d->activeMeta);

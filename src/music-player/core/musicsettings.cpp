@@ -46,7 +46,7 @@ MusicSettings::~MusicSettings()
 
 void MusicSettings::init()
 {
-    m_settings = Dtk::Core::DSettings::fromJsonFile(":/data/deepin-music-settings.json");
+    m_settings = Dtk::Core::DSettings::fromJsonFile(":/data/gxde-music-settings.json");
     auto configFilepath = Global::configPath() + "/config.ini";
     auto backend = new Dtk::Core::QSettingBackend(configFilepath);
     m_settings->setBackend(backend);

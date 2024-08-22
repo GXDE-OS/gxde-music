@@ -251,8 +251,8 @@ void MainFramePrivate::postInitUI()
 {
     Q_Q(MainFrame);
 
-    QString descriptionText = MainFrame::tr("Deepin Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.");
-    QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-music#thanks";
+    QString descriptionText = MainFrame::tr("GXDE Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.");
+    QString acknowledgementLink = "https://gitee.com/GXDE-OS/gxde-music";
     qApp->setProductName(QApplication::tr("Deepin Music"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
     qApp->setProductIcon(QIcon(":/common/image/app_icon.svg"));
@@ -602,7 +602,7 @@ void MainFrame::postInitUI()
     trayIconMenu->addAction(quitAction);
 
     auto trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(QIcon(":/common/image/deepin-music.svg"));
+    trayIcon->setIcon(QIcon(":/common/image/gxde-music.svg"));
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->show();
 

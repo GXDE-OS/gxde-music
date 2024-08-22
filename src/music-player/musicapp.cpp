@@ -73,7 +73,7 @@ void MusicAppPrivate::initMpris(const QString &serviceName)
     mprisPlayer->setCanSetFullscreen(false);
     mprisPlayer->setHasTrackList(false);
     // setDesktopEntry: see https://specifications.freedesktop.org/mpris-spec/latest/Media_Player.html#Property:DesktopEntry for more
-    mprisPlayer->setDesktopEntry("deepin-music");
+    mprisPlayer->setDesktopEntry("gxde-music");
     mprisPlayer->setIdentity("Deepin Music Player");
 
     mprisPlayer->setCanControl(true);

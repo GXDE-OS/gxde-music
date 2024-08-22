@@ -17,7 +17,7 @@ translations.path = $${PREFIX}/share/$${TARGET}/translations
 translations.files = $$PWD/translations/*.qm
 
 hicolor.path =  $${PREFIX}/share/icons/hicolor/scalable/apps
-hicolor.files = $$PWD/resource/theme/common/image/deepin-music.svg
+hicolor.files = $$PWD/resource/theme/common/image/gxde-music.svg
 
 INSTALLS += target translations desktop_files dman hicolor
 

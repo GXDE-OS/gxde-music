@@ -84,7 +84,7 @@ CloseConfirmDialog::CloseConfirmDialog(QWidget *parent) :
     contentLayout->addSpacing(6);
     contentLayout->addWidget(d->remember, 0, Qt::AlignLeft);
 
-    setIcon(QIcon(":/common/image/deepin-music.svg"));
+    setIcon(QIcon(":/common/image/gxde-music.svg"));
     addContent(contentFrame);
 
     addButton(tr("Cancel"), false, ButtonNormal);

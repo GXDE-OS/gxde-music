@@ -1,9 +1,8 @@
-gxde-music (3.1.18) UNRELEASED; urgency=medium
+gxde-music (3.1.19) UNRELEASED; urgency=medium
 
-  * Non-maintainer upload.
-  * 
+  * Repair conflict problem
 
- -- gfdgd_xi <3025613752@qq.com>  Sat, 17 Aug 2024 09:24:55 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Thu, 29 Aug 2024 16:43:41 +0800
 
 gxde-music (2.99.0-1) stable; urgency=low
 

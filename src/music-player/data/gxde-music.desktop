@@ -165,9 +165,9 @@ Name[tr]=GXDE Müzik
 Name[ug]=GXDE ناخشى قويغۇچى
 Name[uk]=GXDE Музика
 Name[vi]=Trình nghe nhạc GXDE
-Name[zh_CN]=极星音乐
-Name[zh_HK]=极星音樂
-Name[zh_TW]=极星音樂
+Name[zh_CN]=GXDE 音乐
+Name[zh_HK]=GXDE 音樂
+Name[zh_TW]=GXDE 音樂
 
 [X-Next Shortcut Group]
 Exec=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.GXDEMusic /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next

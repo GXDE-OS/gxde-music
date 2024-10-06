@@ -25,6 +25,7 @@
 #include <QDBusPendingCall>
 #include <QCommandLineParser>
 #include <QProcessEnvironment>
+#include <QFileInfo>
 
 #include <DLog>
 #include <DStandardPaths>

@@ -1,6 +1,6 @@
-gxde-music (3.1.19) UNRELEASED; urgency=medium
+gxde-music (3.1.20) UNRELEASED; urgency=medium
 
-  * Repair conflict problem
+  * Fix translation
 
  -- gfdgd_xi <3025613752@qq.com>  Thu, 29 Aug 2024 16:43:41 +0800
 

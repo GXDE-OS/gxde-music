@@ -7,6 +7,7 @@ export QT_SELECT=5
 	dh $@ --parallel
 
 override_dh_auto_configure:
+	cd src/music-player && ./update-translation.sh && cd ../..
 	dh_auto_configure -- DEFINES+="VERSION=$(DEB_VERSION_UPSTREAM)"
 
 override_dh_auto_install:

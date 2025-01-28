@@ -1,8 +1,9 @@
-gxde-music (3.1.20) UNRELEASED; urgency=medium
+gxde-music (3.1.21) UNRELEASED; urgency=medium
 
   * Fix translation
+  * 兼容全局背景
 
- -- gfdgd_xi <3025613752@qq.com>  Thu, 29 Aug 2024 16:43:41 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Tue, 28 Jan 2025 11:50:13 +0800
 
 gxde-music (2.99.0-1) stable; urgency=low
 

@@ -567,6 +567,7 @@ MainFrame::MainFrame(QWidget *parent) :
 {
     setObjectName("MainFrame");
     DThemeManager::instance()->registerWidget(this, QStringList() << s_PropertyViewname);
+    setEnableWindowBackground(1);
 }
 
 MainFrame::~MainFrame()

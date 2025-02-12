@@ -1,8 +1,9 @@
-gxde-music (3.2.1) UNRELEASED; urgency=medium
+gxde-music (3.2.1.1) UNRELEASED; urgency=medium
 
   * 支持在 GXDE 25 构建
+  * 移除无用依赖 gstreamer1.0-fluendo-mp3
 
- -- gfdgd_xi <3025613752@qq.com>  Wed, 12 Feb 2025 11:58:07 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Wed, 12 Feb 2025 12:34:19 +0800
 
 gxde-music (2.99.0-1) stable; urgency=low
 

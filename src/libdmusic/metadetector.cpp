@@ -120,9 +120,9 @@ void MetaDetector::updateMediaFileTagCodec(MediaMeta *meta, const QByteArray &co
     }
 
     bool encode = true;
-    encode &= tag->title().isNull() ? true : tag->title().isLatin1();
-    encode &= tag->artist().isNull() ? true : tag->artist().isLatin1();
-    encode &= tag->album().isNull() ? true : tag->album().isLatin1();
+    encode &= tag->title().isEmpty() ? true : tag->title().isLatin1();
+    encode &= tag->artist().isEmpty() ? true : tag->artist().isLatin1();
+    encode &= tag->album().isEmpty() ? true : tag->album().isLatin1();
 
     if (forceEncode) {
         encode = true;

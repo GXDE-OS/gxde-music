@@ -1,8 +1,8 @@
-gxde-music (3.1.22) UNRELEASED; urgency=medium
+gxde-music (3.2.0) UNRELEASED; urgency=medium
 
-  * 新增支持设置背景图片标签
+  * 开启网络歌词支持
 
- -- gfdgd_xi <3025613752@qq.com>  Mon, 03 Feb 2025 22:56:31 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Wed, 12 Feb 2025 10:45:50 +0800
 
 gxde-music (2.99.0-1) stable; urgency=low
 

@@ -42,6 +42,7 @@
 #include <DToast>
 #include <DTitlebar>
 #include <dimagebutton.h>
+#include <QSvgRenderer>
 
 #include "../presenter/presenter.h"
 #include "../core/metasearchservice.h"
@@ -992,6 +993,12 @@ void MainFrame::setCoverBackground(QString coverBackground)
     Q_D(MainFrame);
     d->coverBackground = coverBackground;
     QImage image = QImage(coverBackground);
+    image.setDevicePixelRatio(this->devicePixelRatioF());
+
+    qreal scaleFactor = this->devicePixelRatioF();
+    int iconSize = static_cast<int>(size().width() * scaleFactor);
+    image = image.scaled(iconSize, iconSize, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+
     d->originCoverImage = WidgetHelper::blurImage(image, BlurRadius).toImage();
     d->currentCoverImage = WidgetHelper::cropRect(d->originCoverImage, size());
 

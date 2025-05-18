@@ -12,7 +12,7 @@ QT  += dtkcore
 
 TARGET      = dmusic
 TEMPLATE    = lib
-CONFIG      += c++11 link_pkgconfig
+CONFIG      += c++17 link_pkgconfig
 
 DESTDIR     = $$BUILD_DIST/lib
 

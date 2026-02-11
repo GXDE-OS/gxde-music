@@ -54,7 +54,7 @@ SearchResult::SearchResult(QWidget *parent) : QFrame(parent)
     m_doSearchButton->setCheckable(true);
     m_doSearchButton->setObjectName("SearchResultAction");
     m_doSearchButton->setFixedHeight(25);
-    m_doSearchButton->setText(tr("Search \"%1\" in Deepin Music"));
+    m_doSearchButton->setText(tr("Search \"%1\" in GXDE Music"));
     m_model = new QStringListModel;
 
     QStringList a;
@@ -123,7 +123,7 @@ void SearchResult::setSearchString(const QString &str)
 {
     m_model->setProperty("searchString", str);
 
-    auto searchHits = QString(tr("Search \"%1\" in Deepin Music")).arg(str);
+    auto searchHits = QString(tr("Search \"%1\" in GXDE Music")).arg(str);
     m_doSearchButton->setText(searchHits);
 }
 

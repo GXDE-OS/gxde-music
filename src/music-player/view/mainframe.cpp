@@ -254,7 +254,7 @@ void MainFramePrivate::postInitUI()
 
     QString descriptionText = MainFrame::tr("GXDE Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.");
     QString acknowledgementLink = "https://gitee.com/GXDE-OS/gxde-music";
-    qApp->setProductName(QApplication::tr("Deepin Music"));
+    qApp->setProductName(QApplication::tr("GXDE Music"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
     qApp->setProductIcon(QIcon(":/common/image/app_icon.svg"));
     qApp->setApplicationDescription(descriptionText);

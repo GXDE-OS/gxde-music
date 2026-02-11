@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>CloseConfirmDialog</name>
     <message>
@@ -181,27 +183,27 @@
 <context>
     <name>LyricWidget</name>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="166"/>
+        <location filename="../view/lyricwidget.cpp" line="167"/>
         <source>Find lyrics</source>
         <translation>搜索歌词</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="170"/>
+        <location filename="../view/lyricwidget.cpp" line="171"/>
         <source>Title</source>
         <translation>歌曲名称</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="175"/>
+        <location filename="../view/lyricwidget.cpp" line="176"/>
         <source>Artist</source>
         <translation>歌手名称</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="180"/>
+        <location filename="../view/lyricwidget.cpp" line="181"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="213"/>
+        <location filename="../view/lyricwidget.cpp" line="214"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
@@ -209,81 +211,103 @@
 <context>
     <name>MainFrame</name>
     <message>
-        <location filename="../view/mainframe.cpp" line="136"/>
+        <location filename="../view/mainframe.cpp" line="137"/>
         <source>New playlist</source>
         <translation>新建歌单</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="152"/>
+        <location filename="../view/mainframe.cpp" line="153"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="183"/>
-        <location filename="../view/mainframe.cpp" line="595"/>
+        <location filename="../view/mainframe.cpp" line="184"/>
+        <location filename="../view/mainframe.cpp" line="597"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="142"/>
+        <location filename="../view/mainframe.cpp" line="143"/>
         <source>Add folder</source>
         <translation>添加文件夹</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="147"/>
+        <location filename="../view/mainframe.cpp" line="148"/>
         <source>Add file</source>
         <translation>添加文件</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="168"/>
+        <location filename="../view/mainframe.cpp" line="169"/>
         <source>Dark theme</source>
         <translation>深色主题</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="254"/>
         <source>Deepin Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.</source>
-        <translation>深度音乐是一款设计美观，功能简洁的本地音乐播放器。支持播放时查看歌词、播放无损音乐、自定义创建歌单等功能。</translation>
+        <translation type="vanished">深度音乐是一款设计美观，功能简洁的本地音乐播放器。支持播放时查看歌词、播放无损音乐、自定义创建歌单等功能。</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="592"/>
+        <location filename="../view/mainframe.cpp" line="594"/>
         <source>Play/Pause</source>
         <translation>播放/暂停</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="593"/>
+        <location filename="../view/mainframe.cpp" line="595"/>
         <source>Previous</source>
         <translation>上一首</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="739"/>
+        <location filename="../view/mainframe.cpp" line="741"/>
         <source>Invalid or non-existent file</source>
         <translation>文件无效或不存在</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="760"/>
+        <location filename="../view/mainframe.cpp" line="762"/>
         <source>Failed to import, no vaild music file found!</source>
         <translation>导入失败，未找到有效的音乐文件！</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="1027"/>
+        <location filename="../view/mainframe.cpp" line="1035"/>
         <source>All music</source>
         <translation>所有音乐</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="740"/>
-        <location filename="../view/mainframe.cpp" line="765"/>
+        <location filename="../view/mainframe.cpp" line="742"/>
+        <location filename="../view/mainframe.cpp" line="767"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="690"/>
+        <location filename="../view/mainframe.cpp" line="255"/>
+        <source>GXDE Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.</source>
+        <translation>GXDE 音乐是一款设计美观，功能简洁的本地音乐播放器。支持播放时查看歌词、播放无损音乐、自定义创建歌单等功能。</translation>
+    </message>
+    <message>
+        <location filename="../view/mainframe.cpp" line="692"/>
         <source>Successfully added to &quot;%1&quot;</source>
         <translation>成功添加到“%1”</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="594"/>
+        <location filename="../view/mainframe.cpp" line="596"/>
         <source>Next</source>
         <translation>下一首</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="318"/>
+        <source>File invalid or does not exist, load failed!</source>
+        <translation>文件无效或不存在，加载失败！</translation>
+    </message>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="319"/>
+        <source>I got it</source>
+        <translation>知道了</translation>
+    </message>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="342"/>
+        <source>Successfully added to &quot;%1&quot;</source>
+        <translation>成功添加到“%1”</translation>
     </message>
 </context>
 <context>
@@ -481,17 +505,20 @@
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../view/mainframe.cpp" line="256"/>
         <source>Deepin Music</source>
-        <translation>深度音乐</translation>
+        <translation type="vanished">深度音乐</translation>
+    </message>
+    <message>
+        <location filename="../view/mainframe.cpp" line="257"/>
+        <source>GXDE Music</source>
+        <translation>GXDE 音乐</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="87"/>
         <source>Deepin Music</source>
-        <translation>深度音乐</translation>
+        <translation type="vanished">深度音乐</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="26"/>
@@ -502,6 +529,10 @@
         <location filename="../view/widget/settingsdialog.cpp" line="27"/>
         <source>Exit Deepin Music</source>
         <translation>退出深度音乐</translation>
+    </message>
+    <message>
+        <source>Exit GXDE Music</source>
+        <translation type="vanished">退出GXDE 音乐</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="28"/>
@@ -568,14 +599,23 @@
         <source>Volume up</source>
         <translation>音量增大</translation>
     </message>
+    <message>
+        <location filename="../main.cpp" line="88"/>
+        <source>GXDE Music</source>
+        <translation>GXDE 音乐</translation>
+    </message>
 </context>
 <context>
     <name>SearchResult</name>
     <message>
         <location filename="../view/widget/searchresult.cpp" line="57"/>
         <location filename="../view/widget/searchresult.cpp" line="126"/>
+        <source>Search &quot;%1&quot; in GXDE Music</source>
+        <translation>在GXDE 音乐中搜索“%1”</translation>
+    </message>
+    <message>
         <source>Search &quot;%1&quot; in Deepin Music</source>
-        <translation>在深度音乐中搜索“%1”</translation>
+        <translation type="vanished">在深度音乐中搜索“%1”</translation>
     </message>
 </context>
 <context>

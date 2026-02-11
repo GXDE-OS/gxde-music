@@ -1,10 +1,12 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_HK" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_HK">
 <context>
     <name>CloseConfirmDialog</name>
     <message>
         <location filename="../view/widget/closeconfirmdialog.cpp" line="61"/>
         <source>Please select your operation</source>
-        <translation type="unfinished"/>
+        <translation>請選擇動作</translation>
     </message>
     <message>
         <location filename="../view/widget/closeconfirmdialog.cpp" line="68"/>
@@ -14,12 +16,12 @@
     <message>
         <location filename="../view/widget/closeconfirmdialog.cpp" line="70"/>
         <source>Minimize to system tray</source>
-        <translation type="unfinished"/>
+        <translation>最小化到系統匣</translation>
     </message>
     <message>
         <location filename="../view/widget/closeconfirmdialog.cpp" line="79"/>
         <source>Do not ask again</source>
-        <translation type="unfinished"/>
+        <translation>不再詢問</translation>
     </message>
     <message>
         <location filename="../view/widget/closeconfirmdialog.cpp" line="90"/>
@@ -84,17 +86,17 @@
     <message>
         <location filename="../view/footerwidget.cpp" line="696"/>
         <source>List Loop</source>
-        <translation type="unfinished"/>
+        <translation>列表循環</translation>
     </message>
     <message>
         <location filename="../view/footerwidget.cpp" line="699"/>
         <source>Single Loop</source>
-        <translation type="unfinished"/>
+        <translation>單曲循環</translation>
     </message>
     <message>
         <location filename="../view/footerwidget.cpp" line="702"/>
         <source>Shuffle</source>
-        <translation type="unfinished"/>
+        <translation>隨機播放</translation>
     </message>
 </context>
 <context>
@@ -114,7 +116,7 @@
         <location filename="../view/importwidget.cpp" line="80"/>
         <location filename="../view/importwidget.cpp" line="121"/>
         <source>%1 music directory or drag &amp; drop music file to add music</source>
-        <translation type="unfinished"/>
+        <translation>%1 音樂資料夾或拖拽音樂檔案到此加入音樂</translation>
     </message>
     <message>
         <location filename="../view/importwidget.cpp" line="112"/>
@@ -181,27 +183,27 @@
 <context>
     <name>LyricWidget</name>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="166"/>
+        <location filename="../view/lyricwidget.cpp" line="167"/>
         <source>Find lyrics</source>
-        <translation type="unfinished"/>
+        <translation>搜索歌詞</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="170"/>
+        <location filename="../view/lyricwidget.cpp" line="171"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="175"/>
+        <location filename="../view/lyricwidget.cpp" line="176"/>
         <source>Artist</source>
         <translation>藝術家</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="180"/>
+        <location filename="../view/lyricwidget.cpp" line="181"/>
         <source>Search</source>
         <translation>搜尋</translation>
     </message>
     <message>
-        <location filename="../view/lyricwidget.cpp" line="213"/>
+        <location filename="../view/lyricwidget.cpp" line="214"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
@@ -209,81 +211,99 @@
 <context>
     <name>MainFrame</name>
     <message>
-        <location filename="../view/mainframe.cpp" line="136"/>
+        <location filename="../view/mainframe.cpp" line="137"/>
         <source>New playlist</source>
         <translation>新增播放清單</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="152"/>
+        <location filename="../view/mainframe.cpp" line="153"/>
         <source>Settings</source>
         <translation>設置</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="183"/>
-        <location filename="../view/mainframe.cpp" line="595"/>
+        <location filename="../view/mainframe.cpp" line="184"/>
+        <location filename="../view/mainframe.cpp" line="597"/>
         <source>Exit</source>
         <translation>離開</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="142"/>
+        <location filename="../view/mainframe.cpp" line="143"/>
         <source>Add folder</source>
         <translation>新增資料夾</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="147"/>
+        <location filename="../view/mainframe.cpp" line="148"/>
         <source>Add file</source>
         <translation>新增檔案</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="168"/>
+        <location filename="../view/mainframe.cpp" line="169"/>
         <source>Dark theme</source>
         <translation>深色主題</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="254"/>
-        <source>Deepin Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../view/mainframe.cpp" line="592"/>
+        <location filename="../view/mainframe.cpp" line="594"/>
         <source>Play/Pause</source>
         <translation>暫停/繼續</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="593"/>
+        <location filename="../view/mainframe.cpp" line="595"/>
         <source>Previous</source>
         <translation>上一首</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="739"/>
+        <location filename="../view/mainframe.cpp" line="741"/>
         <source>Invalid or non-existent file</source>
         <translation>無效或不存在的檔案</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="760"/>
+        <location filename="../view/mainframe.cpp" line="762"/>
         <source>Failed to import, no vaild music file found!</source>
-        <translation type="unfinished"/>
+        <translation>無法匯入，找不到有效的音樂檔案！</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="1027"/>
+        <location filename="../view/mainframe.cpp" line="1035"/>
         <source>All music</source>
         <translation>所有音樂</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="740"/>
-        <location filename="../view/mainframe.cpp" line="765"/>
+        <location filename="../view/mainframe.cpp" line="742"/>
+        <location filename="../view/mainframe.cpp" line="767"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="690"/>
+        <location filename="../view/mainframe.cpp" line="255"/>
+        <source>GXDE Music is a beautiful and simple music player that plays local audios. It supports viewing lyrics during playback, playing lossless audio and playlist customization, etc.</source>
+        <translation>GXDE 音樂是一款設計美觀、功能簡潔的本地音樂播放器。支持播放時查看歌詞、播放無損音樂、自訂創建歌單等功能。</translation>
+    </message>
+    <message>
+        <location filename="../view/mainframe.cpp" line="692"/>
         <source>Successfully added to &quot;%1&quot;</source>
         <translation>成功新增到「%1」</translation>
     </message>
     <message>
-        <location filename="../view/mainframe.cpp" line="594"/>
+        <location filename="../view/mainframe.cpp" line="596"/>
         <source>Next</source>
         <translation>下一步</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="318"/>
+        <source>File invalid or does not exist, load failed!</source>
+        <translation>檔案無效或不存在，載入失敗！</translation>
+    </message>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="319"/>
+        <source>I got it</source>
+        <translation>知道了</translation>
+    </message>
+    <message>
+        <location filename="../view/mainwindow.cpp" line="342"/>
+        <source>Successfully added to &quot;%1&quot;</source>
+        <translation>成功新增到「%1」</translation>
     </message>
 </context>
 <context>
@@ -316,13 +336,13 @@
     <message>
         <location filename="../view/widget/musiclistview.cpp" line="425"/>
         <source>Are you sure you want to delete %1?</source>
-        <translation type="unfinished"/>
+        <translation>您確定要刪除 %1 嗎？</translation>
     </message>
     <message>
         <location filename="../view/widget/musiclistview.cpp" line="427"/>
         <location filename="../view/widget/musiclistview.cpp" line="431"/>
         <source>Are you sure you want to delete the selected %1 songs?</source>
-        <translation type="unfinished"/>
+        <translation>您確定要刪除選中的%1首歌曲嗎？</translation>
     </message>
     <message>
         <location filename="../view/widget/musiclistview.cpp" line="345"/>
@@ -352,7 +372,7 @@
     <message>
         <location filename="../view/widget/musiclistview.cpp" line="432"/>
         <source>Deleting the current song will also delete the song files contained</source>
-        <translation type="unfinished"/>
+        <translation>刪除歌曲也會刪除電腦中的檔案</translation>
     </message>
     <message>
         <location filename="../view/widget/delegate/musicitemdelegate.cpp" line="299"/>
@@ -385,7 +405,7 @@
     <message>
         <location filename="../view/musiclistwidget.cpp" line="182"/>
         <source>Time added</source>
-        <translation type="unfinished"/>
+        <translation>加入時間</translation>
     </message>
     <message>
         <location filename="../view/musiclistwidget.cpp" line="183"/>
@@ -413,7 +433,7 @@
     <message>
         <location filename="../view/widget/playlistitem.cpp" line="187"/>
         <source>Are you sure you want to delete this playlist?</source>
-        <translation type="unfinished"/>
+        <translation>您確定要刪除此歌單嗎？</translation>
     </message>
     <message>
         <location filename="../view/widget/playlistitem.cpp" line="194"/>
@@ -481,27 +501,34 @@
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../view/mainframe.cpp" line="256"/>
         <source>Deepin Music</source>
-        <translation>Deepin 音樂</translation>
+        <translation type="vanished">Deepin 音樂</translation>
+    </message>
+    <message>
+        <location filename="../view/mainframe.cpp" line="257"/>
+        <source>GXDE Music</source>
+        <translation>GXDE 音樂</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="87"/>
         <source>Deepin Music</source>
-        <translation>Deepin 音樂</translation>
+        <translation type="vanished">Deepin 音樂</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="26"/>
         <source>Minimize to system tray</source>
-        <translation type="unfinished"/>
+        <translation>最小化到系統匣</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="27"/>
         <source>Exit Deepin Music</source>
         <translation>退出 Deepin 音樂</translation>
+    </message>
+    <message>
+        <source>Exit GXDE Music</source>
+        <translation type="vanished">退出 GXDE 音樂</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="28"/>
@@ -511,7 +538,7 @@
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="29"/>
         <source>Enable fade in/out</source>
-        <translation type="unfinished"/>
+        <translation>啟用淡入淡出</translation>
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="30"/>
@@ -568,14 +595,23 @@
         <source>Volume up</source>
         <translation>調高音量</translation>
     </message>
+    <message>
+        <location filename="../main.cpp" line="88"/>
+        <source>GXDE Music</source>
+        <translation>GXDE 音樂</translation>
+    </message>
 </context>
 <context>
     <name>SearchResult</name>
     <message>
         <location filename="../view/widget/searchresult.cpp" line="57"/>
         <location filename="../view/widget/searchresult.cpp" line="126"/>
+        <source>Search &quot;%1&quot; in GXDE Music</source>
+        <translation>於 GXDE 音樂搜尋「%1」</translation>
+    </message>
+    <message>
         <source>Search &quot;%1&quot; in Deepin Music</source>
-        <translation>於 Deepin 音樂搜尋「%1」</translation>
+        <translation type="vanished">於 Deepin 音樂搜尋「%1」</translation>
     </message>
 </context>
 <context>

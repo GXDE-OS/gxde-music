@@ -72,7 +72,7 @@ void InfoDialogPrivate::initUI()
     layout->setSpacing(0);
     layout->setMargin(5);
 
-    auto closeBt = new DImageButton;
+    auto closeBt = new DWindowCloseButton;
     closeBt->setObjectName("InfoClose");
     closeBt->setFixedSize(27, 23);
 

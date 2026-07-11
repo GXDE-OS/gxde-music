@@ -1,12 +1,13 @@
-gxde-music (3.2.4) UNRELEASED; urgency=medium
+gxde-music (3.2.5) UNRELEASED; urgency=medium
 
   [ zeqi ]
   * 完善简体中文、繁体中文（HK）和繁体中文（TW）的翻译
 
   [ gfdgd_xi ]
   * 修复歌曲信息页面不显示关闭按钮的问题
+  * 补充翻译
 
- -- gfdgd_xi <3025613752@qq.com>  Sun, 29 Mar 2026 08:48:44 +0800
+ -- gfdgd_xi <3025613752@qq.com>  Sat, 11 Jul 2026 13:42:52 +0800
 
 gxde-music (3.2.2) UNRELEASED; urgency=medium
 

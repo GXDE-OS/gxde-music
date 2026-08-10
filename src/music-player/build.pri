@@ -56,7 +56,7 @@ LIBS += -L$$BUILD_DIST/lib/ -ldmusic
 INCLUDEPATH += $$PWD/../libdmusic
 DEPENDPATH += $$PWD/../libdmusic
 
-LIBS += -L$$BUILD_DIST/lib/ -ldbusextended-qt5
+LIBS += -L$$BUILD_DIST/lib/ -ldbusextended-qt6
 
 INCLUDEPATH += $$PWD/../vendor/dbusextended-qt/src
 DEPENDPATH += $$PWD/../vendor/dbusextended-qt/src

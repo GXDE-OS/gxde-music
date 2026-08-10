@@ -405,9 +405,6 @@ void Player::playMeta(PlaylistPtr playlist, const MetaPtr meta)
     d->activePlaylist = playlist;
 
     d->activeMeta = meta;
-    d->qplayer->setSource(QUrl::fromLocalFile(meta->localPath));
-    d->qplayer->setPosition(meta->offset);
-    d->applyVolume();
     d->activePlaylist->play(meta);
 
     DRecentData data;
@@ -417,11 +414,18 @@ void Player::playMeta(PlaylistPtr playlist, const MetaPtr meta)
 
     Q_EMIT mediaPlayed(d->activePlaylist, d->activeMeta);
 
-    if (d->qplayer->mediaStatus() == QMediaPlayer::BufferedMedia) {
-        QTimer::singleShot(100, this, [ = ]() {
-            d->qplayer->play();
-        });
-    }
+    // Qt6 ffmpeg 后端在 EndOfMedia -> selectNext 的回调链里同步调用 setSource()
+    // 会触发线程断言崩溃（isCurrentThread）。将所有后端操作延后到下一事件循环，
+    // 让上一首的后端线程上下文先完全退出再切换音源。
+    QTimer::singleShot(0, this, [ = ]() {
+        if (d->activeMeta != meta) {
+            return;
+        }
+        d->qplayer->setSource(QUrl::fromLocalFile(meta->localPath));
+        d->qplayer->setPosition(meta->offset);
+        d->applyVolume();
+        d->qplayer->play();
+    });
 }
 
 void Player::resume(PlaylistPtr playlist, const MetaPtr meta)
@@ -632,14 +636,30 @@ void Player::setPosition(qlonglong position)
         return;
     }
 
-    // Qt6 的 QMediaPlayer 在暂停态下执行 seek 可能被后端异步自动恢复播放，
-    // 导致“暂停时拖动进度条却开始播放、但播放键仍显示暂停”的状态不一致。
-    // 标记 suppressResume，由 playbackStateChanged 回调在自动恢复时重新暂停。
     const bool wasPlaying = (d->qplayer->playbackState() == QMediaPlayer::PlayingState);
-    if (!wasPlaying) {
-        d->suppressResume = true;
+
+    // Qt6 后端在播放态下做大距离 seek 会进入缓冲/stall 且多次 seek 后卡死，
+    // 表现为“拖动太多次进入缓冲、停止再播才恢复”。
+    // 采用与 resume() 相同的“重建流”策略：暂停 -> 重新 setSource+setPosition -> play，
+    // 让后端一次性干净定位，避免边播边跳打断缓冲队列。
+    if (wasPlaying) {
+        d->qplayer->pause();
+        const qint64 targetPos = (d->qplayer->duration() == d->activeMeta->length)
+                                 ? position
+                                 : position + d->activeMeta->offset;
+        const QString path = d->activeMeta->localPath;
+        QTimer::singleShot(0, this, [ = ]() {
+            d->qplayer->setSource(QUrl::fromLocalFile(path));
+            d->qplayer->setPosition(targetPos);
+            d->applyVolume();
+            d->qplayer->play();
+        });
+        return;
     }
 
+    // 暂停态下 seek：Qt6 后端可能异步自动恢复播放，导致状态不一致，
+    // 标记 suppressResume 由 playbackStateChanged 回调重新暂停。
+    d->suppressResume = true;
     if (d->qplayer->duration() == d->activeMeta->length) {
         d->qplayer->setPosition(position);
     } else {

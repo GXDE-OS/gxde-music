@@ -28,7 +28,7 @@ PushButton::PushButton(QWidget *parent) : QPushButton(parent)
 
 }
 
-void PushButton::enterEvent(QEvent *event)
+void PushButton::enterEvent(QEnterEvent *event)
 {
     QPushButton::enterEvent(event);
     Q_EMIT entered();

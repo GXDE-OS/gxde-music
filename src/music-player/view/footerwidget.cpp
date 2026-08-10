@@ -319,7 +319,7 @@ Footer::Footer(QWidget *parent) :
     d->ctlWidget = new QFrame(this);
 //    d->ctlWidget->setStyleSheet("border: 1px solid red;");
     auto ctlLayout = new QHBoxLayout(d->ctlWidget);
-    ctlLayout->setMargin(0);
+    ctlLayout->setContentsMargins(0, 0, 0, 0);
     ctlLayout->setSpacing(30);
     ctlLayout->addWidget(d->btPrev, 0, Qt::AlignCenter);
     ctlLayout->addWidget(d->btPlay, 0, Qt::AlignCenter);
@@ -328,7 +328,7 @@ Footer::Footer(QWidget *parent) :
 
     auto actWidget = new QWidget;
     auto actLayout = new QHBoxLayout(actWidget);
-    actLayout->setMargin(0);
+    actLayout->setContentsMargins(0, 0, 0, 0);
     actLayout->setSpacing(20);
     actLayout->addWidget(d->btFavorite, 0, Qt::AlignRight | Qt::AlignVCenter);
     actLayout->addWidget(d->btLyric, 0, Qt::AlignRight | Qt::AlignVCenter);
@@ -602,6 +602,14 @@ void Footer::onMusicStoped(PlaylistPtr playlist, const MetaPtr meta)
     d->cover->update();
     d->updateQssProperty(d->btPlay, sPropertyPlayStatus, sPlayStatusValueStop);
     d->updateQssProperty(this, sPropertyPlayStatus, sPlayStatusValueStop);
+}
+
+void Footer::setPlayStatus(bool playing)
+{
+    Q_D(Footer);
+    auto status = playing ? sPlayStatusValuePlaying : sPlayStatusValuePause;
+    d->updateQssProperty(d->btPlay, sPropertyPlayStatus, status);
+    d->updateQssProperty(this, sPropertyPlayStatus, status);
 }
 
 void Footer::onMediaLibraryClean()

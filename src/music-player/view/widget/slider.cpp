@@ -24,6 +24,7 @@
 #include <QDebug>
 
 #include <QMouseEvent>
+#include <QEnterEvent>
 #include <QStyle>
 #include <QVariantAnimation>
 
@@ -128,7 +129,7 @@ void Slider::mouseMoveEvent(QMouseEvent *event)
     setSliderPosition(value);
 }
 
-void Slider::enterEvent(QEvent *event)
+void Slider::enterEvent(QEnterEvent *event)
 {
     setProperty("hover", true);
     Q_EMIT hoverd(true);

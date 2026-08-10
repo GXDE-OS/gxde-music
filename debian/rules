@@ -1,10 +1,8 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/default.mk
 
-export QT_SELECT=5
-
 %:
-	dh $@ --parallel
+	dh $@ --parallel --buildsystem=qmake6
 
 override_dh_auto_configure:
 	cd src/music-player && ./update-translation.sh && cd ../..

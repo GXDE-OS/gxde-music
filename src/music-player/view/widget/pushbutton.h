@@ -23,6 +23,7 @@
 #define PUSHBUTTON_H
 
 #include <QPushButton>
+#include <QEnterEvent>
 
 class PushButton : public QPushButton
 {
@@ -30,7 +31,7 @@ class PushButton : public QPushButton
 public:
     explicit PushButton(QWidget *parent = Q_NULLPTR);
 
-    virtual void enterEvent(QEvent *event) Q_DECL_OVERRIDE;
+    virtual void enterEvent(QEnterEvent *event) Q_DECL_OVERRIDE;
 signals:
     void entered();
 

@@ -21,6 +21,7 @@
 
 #include "mediadatabase.h"
 
+#include <algorithm>
 #include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -214,7 +215,7 @@ void margeDatabase()
     int currentVersion = databaseVersion();
 
     QList<int> sortVer = margeFuncs.keys();
-    qSort(sortVer.begin(), sortVer.end());
+    std::sort(sortVer.begin(), sortVer.end());
 
     for (auto ver : sortVer) {
         if (ver > currentVersion) {

@@ -355,7 +355,6 @@ void LyricWidget::paintEvent(QPaintEvent *e)
     QPainter painter(this);
 
     painter.setRenderHint(QPainter::Antialiasing);
-    painter.setRenderHint(QPainter::HighQualityAntialiasing);
 
 //    auto optical = d->lyricview->optical();
 
@@ -426,7 +425,7 @@ void LyricWidget::onProgressChanged(qint64 value, qint64 /*length*/)
     Q_D(LyricWidget);
 
     QPalette p = palette();
-    p.setColor(QPalette::Background, d->backgroundColor);
+    p.setColor(QPalette::Window, d->backgroundColor);
     setPalette(p);
 
     auto len = d->m_lyriclist.m_lyricElements.length();

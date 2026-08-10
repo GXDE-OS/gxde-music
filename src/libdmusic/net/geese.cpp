@@ -51,7 +51,7 @@ void Goose::get(const QUrl &url)
         reply->deleteLater();
     });
 
-    reply->connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
+    reply->connect(reply, &QNetworkReply::errorOccurred,
     reply, [ = ](QNetworkReply::NetworkError error) {
         qWarning() << "Goose: get" << reply->errorString();
         Q_EMIT arrive(error, reply->readAll());
@@ -76,7 +76,7 @@ void Goose::post(const QUrl &url, const QByteArray &data)
         reply->deleteLater();
     });
 
-    connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
+    connect(reply, &QNetworkReply::errorOccurred,
     this, [ = ](QNetworkReply::NetworkError error) {
         qWarning() << "Goose: get" << reply->errorString();
         Q_EMIT arrive(error, reply->readAll());

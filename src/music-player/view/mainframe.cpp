@@ -218,8 +218,7 @@ void MainFramePrivate::initUI(bool showLoading)
 
     centralWidget = new QWidget(q);
     contentLayout = new QStackedLayout(centralWidget);
-    contentLayout->setContentsMargins(20, 20, 20, 20);
-    contentLayout->setMargin(0);
+    contentLayout->setContentsMargins(0, 0, 0, 0);
     contentLayout->setSpacing(0);
     q->setCentralWidget(centralWidget);
 
@@ -946,6 +945,12 @@ void MainFrame::binding(Presenter *presenter)
     connect(presenter, &Presenter::musicError,
             d->footer,  &Footer::onMusicError);
 
+    // 播放键状态以 Player 真实播放状态为准，避免 Qt6 后端自动恢复等导致 UI 与实际不一致
+    connect(Player::instance(), &Player::playbackStatusChanged,
+            d->footer, [ = ](Player::PlaybackStatus status) {
+        d->footer->setPlayStatus(status == Player::Playing);
+    });
+
     // playlist
     connect(presenter, &Presenter::playlistAdded,
             d->playlistWidget,  &PlaylistWidget::onPlaylistAdded);
@@ -1015,7 +1020,7 @@ void MainFrame::onSelectImportDirectory()
     fileDlg.setDirectory(lastImportPath);
 
     fileDlg.setViewMode(QFileDialog::Detail);
-    fileDlg.setFileMode(QFileDialog::DirectoryOnly);
+    fileDlg.setFileMode(QFileDialog::Directory);
     if (QFileDialog::Accepted == fileDlg.exec()) {
         d->importWidget->showWaitHint();
         MusicSettings::setOption("base.play.last_import_path",  fileDlg.directory().path());
@@ -1103,7 +1108,7 @@ bool MainFrame::eventFilter(QObject *obj, QEvent *e)
 
     return qApp->eventFilter(obj, e);
 }
-void MainFrame::enterEvent(QEvent *e)
+void MainFrame::enterEvent(QEnterEvent *e)
 {
 //    setCursor(QCursor(Qt::PointingHandCursor));
     DMainWindow::enterEvent(e);

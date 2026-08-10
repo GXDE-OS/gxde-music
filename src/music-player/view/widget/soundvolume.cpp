@@ -24,6 +24,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <QWheelEvent>
+#include <QEnterEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QVBoxLayout>
 #include <QPainterPath>
@@ -161,7 +162,7 @@ void SoundVolume::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
 }
 
-void SoundVolume::enterEvent(QEvent *event)
+void SoundVolume::enterEvent(QEnterEvent *event)
 {
     Q_D(SoundVolume);
     d->mouseIn = true;
@@ -191,7 +192,7 @@ void SoundVolume::paintEvent(QPaintEvent * /*event*/)
 {
     Q_D(const SoundVolume);
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::HighQualityAntialiasing);
+    painter.setRenderHints(QPainter::Antialiasing);
     QPainterPath path;
 
     auto penWidthf = 1.0;

@@ -9,7 +9,7 @@ QT += qml quick
 DEPENDPATH += ../../src
 INCLUDEPATH += ../../src
 LIBS += -L../../src -l$${MPRISQTLIB}
-PKGCONFIG = dbusextended-qt5
+PKGCONFIG = dbusextended-qt6
 
 SOURCES += \
     player.cpp

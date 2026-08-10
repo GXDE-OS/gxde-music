@@ -5,19 +5,18 @@ include($$PWD/../interface/interface.pri)
 load(dtk_translation)
 
 QT       += core gui widgets svg multimedia multimediawidgets xml network sql dbus
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core5compat
 
 TEMPLATE    = app
 TARGET      = $$APP_TARGET
-CONFIG      += c++11 link_pkgconfig
+CONFIG      += c++17 link_pkgconfig
 DESTDIR     = $$BUILD_DIST/bin
 
 unix{
     DEFINES += SUPPORT_INOTIFY
-    QT += x11extras
     PKGCONFIG += icu-uc icu-i18n libavutil libavformat libavcodec
     PKGCONFIG += x11 xext
-    PKGCONFIG += dtkwidget
+    PKGCONFIG += dtk2widget
 }
 
 INCLUDEPATH += $$PWD/view/helper

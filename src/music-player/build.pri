@@ -61,7 +61,7 @@ LIBS += -L$$BUILD_DIST/lib/ -ldbusextended-qt5
 INCLUDEPATH += $$PWD/../vendor/dbusextended-qt/src
 DEPENDPATH += $$PWD/../vendor/dbusextended-qt/src
 
-LIBS += -L$$BUILD_DIST/lib/ -lmpris-qt5
+LIBS += -L$$BUILD_DIST/lib/ -lmpris-qt6
 
 INCLUDEPATH += $$PWD/../vendor/mpris-qt/src
 DEPENDPATH += $$PWD/../vendor/mpris-qt/src

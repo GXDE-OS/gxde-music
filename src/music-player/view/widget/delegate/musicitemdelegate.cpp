@@ -57,7 +57,7 @@ inline int headerPointWidth(const QStyleOptionViewItem &option, const QModelInde
 {
     QFont measuringFont(option.font);
     QFontMetrics fm(measuringFont);
-    auto headerWith = fm.width(QString("%1").arg(index.row()));
+    auto headerWith = fm.horizontalAdvance(QString("%1").arg(index.row()));
     return pixel2point(headerWith) + MusicItemLeftMargin + MusicItemNumberMargin;
 }
 
@@ -65,7 +65,7 @@ inline int tailPointWidth(const QStyleOptionViewItem &option)
 {
     QFont measuringFont(option.font);
     QFontMetrics fm(measuringFont);
-    return pixel2point(fm.width("00:00")) + MusicItemRightMargin;
+    return pixel2point(fm.horizontalAdvance("00:00")) + MusicItemRightMargin;
 }
 
 MusicItemDelegatePrivate::MusicItemDelegatePrivate(MusicItemDelegate *parent):
@@ -225,7 +225,6 @@ void MusicItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     font12.setPixelSize(12);
 
     painter->setRenderHint(QPainter::Antialiasing);
-    painter->setRenderHint(QPainter::HighQualityAntialiasing);
 
     auto background = (index.row() % 2) == 0 ? d->background() : d->alternateBackground();
 

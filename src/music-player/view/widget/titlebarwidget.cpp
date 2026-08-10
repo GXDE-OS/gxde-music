@@ -69,7 +69,7 @@ TitlebarWidget::TitlebarWidget(QWidget *parent) :
     leftWidget->setFixedWidth(148);
     auto leftLayout = new QHBoxLayout(leftWidget);
     leftLayout->setSpacing(10);
-    leftLayout->setMargin(0);
+    leftLayout->setContentsMargins(0, 0, 0, 0);
 
     auto iconLabel = new QLabel;
     iconLabel->setObjectName("TitleIcon");

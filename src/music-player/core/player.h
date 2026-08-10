@@ -24,7 +24,6 @@
 #include <QObject>
 #include <QVariantMap>
 #include <QScopedPointer>
-#include <QMediaContent>
 
 #include <Mpris>
 

@@ -55,7 +55,7 @@ SearchMetaItem::SearchMetaItem(QWidget *parent) : QFrame(parent), d_ptr(new Sear
     auto interFrame = new QFrame();
     interFrame->setObjectName("SearchMetaItemInterFrame");
     auto interLayout = new QHBoxLayout(interFrame);
-    interLayout->setMargin(0);
+    interLayout->setContentsMargins(0, 0, 0, 0);
 
     auto metaInfoLayout = new QVBoxLayout;
     metaInfoLayout->setContentsMargins(10, 10, 10, 10);

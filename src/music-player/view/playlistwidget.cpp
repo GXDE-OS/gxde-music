@@ -50,7 +50,7 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) : QFrame(parent)
     btAddFrame->setObjectName("PlaylistWidgetAddFrame");
     btAddFrame->setFocusPolicy(Qt::NoFocus);
     auto btAddFameLayout = new QVBoxLayout(btAddFrame);
-    btAddFameLayout->setMargin(0);
+    btAddFameLayout->setContentsMargins(0, 0, 0, 0);
 
     auto btAdd = new QPushButton();
     btAdd->setFixedSize(190, 36);

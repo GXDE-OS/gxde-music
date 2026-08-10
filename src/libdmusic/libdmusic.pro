@@ -6,13 +6,14 @@
 
 include($$PWD/../config.pri)
 
-QT  += network
+QT  += network core5compat
 QT  -= gui
-QT  += dtkcore
 
 TARGET      = dmusic
 TEMPLATE    = lib
 CONFIG      += c++17 link_pkgconfig
+
+PKGCONFIG  += dtk6core
 
 DESTDIR     = $$BUILD_DIST/lib
 

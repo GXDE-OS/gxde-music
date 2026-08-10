@@ -67,13 +67,13 @@ prf.files = $${TARGET}.prf
 prf.path = $$[QMAKE_MKSPECS]/features
 INSTALLS += target headers prf
 
-QMAKE_PKGCONFIG_REQUIRES = Qt5Core Qt5DBus dbusextended-qt5
+QMAKE_PKGCONFIG_REQUIRES = Qt6Core Qt6DBus dbusextended-qt6
 QMAKE_PKGCONFIG_LIBDIR = $$target.path
 QMAKE_PKGCONFIG_INCDIR = $$headers.path
 QMAKE_PKGCONFIG_DESTDIR = pkgconfig
 QMAKE_PKGCONFIG_NAME = MprisQt
 
-LIBS += -L$$BUILD_DIST/lib -ldbusextended-qt5
+LIBS += -L$$BUILD_DIST/lib -ldbusextended-qt6
 
 INCLUDEPATH += $$PWD/../../dbusextended-qt/src
 DEPENDPATH += $$PWD/../../dbusextended-qt/src

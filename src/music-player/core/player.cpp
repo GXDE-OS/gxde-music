@@ -25,6 +25,7 @@
 #include <QTimer>
 #include <QMimeDatabase>
 #include <QMediaPlayer>
+#include <QAudioOutput>
 #include <QPropertyAnimation>
 #include "metasearchservice.h"
 
@@ -104,11 +105,14 @@ public:
     PlayerPrivate(Player *parent) : q_ptr(parent)
     {
         qplayer = new QMediaPlayer();
+        audioOutput = new QAudioOutput();
+        qplayer->setAudioOutput(audioOutput);
     }
 
     void initConnection();
     void selectPrev(const MetaPtr info, Player::PlaybackMode mode);
     void selectNext(const MetaPtr info, Player::PlaybackMode mode);
+    void applyVolume();
 
     // player property
     bool canControl     = true;
@@ -126,6 +130,7 @@ public:
 
 
     QMediaPlayer    *qplayer;
+    QAudioOutput    *audioOutput = nullptr;
     PlaylistPtr     activePlaylist;
     MetaPtr         activeMeta;
 
@@ -133,7 +138,7 @@ public:
     bool            playOnLoad  = true;
     bool            fadeInOut   = true;
     double          fadeInOutFactor     = 1.0;
-
+    bool            suppressResume = false;
     QPropertyAnimation  *fadeInAnimation    = nullptr;
     QPropertyAnimation  *fadeOutAnimation   = nullptr;
 
@@ -145,7 +150,6 @@ void PlayerPrivate::initConnection()
 {
     Q_Q(Player);
 
-    qplayer->setAudioRole(QAudio::MusicRole);
     initMiniTypes();
 
     q->connect(qplayer, &QMediaPlayer::positionChanged,
@@ -172,7 +176,7 @@ void PlayerPrivate::initConnection()
             Q_EMIT q->mediaUpdate(activePlaylist, activeMeta);
         }
 
-        if (position >= activeMeta->offset + activeMeta->length + 1800 && qplayer->state() == QMediaPlayer::PlayingState) {
+        if (position >= activeMeta->offset + activeMeta->length + 1800 && qplayer->playbackState() == QMediaPlayer::PlayingState) {
             qDebug() << "WARN!!! change to next by position change";
             QTimer::singleShot(10, [ = ]() {
                 selectNext(activeMeta, mode);
@@ -203,8 +207,15 @@ void PlayerPrivate::initConnection()
         Q_EMIT q->positionChanged(position - activeMeta->offset,  activeMeta->length);
     });
 
-    q->connect(qplayer, &QMediaPlayer::stateChanged,
-    q, [ = ](QMediaPlayer::State newState) {
+    q->connect(qplayer, &QMediaPlayer::playbackStateChanged,
+    q, [ = ](QMediaPlayer::PlaybackState newState) {
+        // 暂停态下执行 seek 时，Qt6 后端可能异步自动恢复播放。
+        // 若此前标记了 suppressResume，则在这里重新暂停，保持暂停态。
+        if (newState == QMediaPlayer::PlayingState && q->d_func()->suppressResume) {
+            q->d_func()->suppressResume = false;
+            qplayer->pause();
+            return;
+        }
         switch (newState) {
         case QMediaPlayer::StoppedState:
             Q_EMIT q->playbackStatusChanged(Player::Stopped);
@@ -218,11 +229,11 @@ void PlayerPrivate::initConnection()
         }
     });
 
-    q->connect(qplayer, &QMediaPlayer::volumeChanged,
-    q, [ = ](int volume) {
-        Q_EMIT q->volumeChanged(volume / fadeInOutFactor);
+    q->connect(audioOutput, &QAudioOutput::volumeChanged,
+    q, [ = ](float volume) {
+        Q_EMIT q->volumeChanged(volume * 100 / fadeInOutFactor);
     });
-    q->connect(qplayer, &QMediaPlayer::mutedChanged,
+    q->connect(audioOutput, &QAudioOutput::mutedChanged,
                q, &Player::mutedChanged);
     q->connect(qplayer, &QMediaPlayer::durationChanged,
                q, &Player::durationChanged);
@@ -259,7 +270,6 @@ void PlayerPrivate::initConnection()
 
             break;
         }
-        case QMediaPlayer::UnknownMediaStatus:
         case QMediaPlayer::NoMedia:
         case QMediaPlayer::StalledMedia:
         case QMediaPlayer::BufferedMedia:
@@ -269,14 +279,15 @@ void PlayerPrivate::initConnection()
         }
     });
 
-    q->connect(qplayer, static_cast<void (QMediaPlayer::*)(QMediaPlayer::Error error)>(&QMediaPlayer::error),
-    q, [ = ](QMediaPlayer::Error error) {
+    q->connect(qplayer, &QMediaPlayer::errorOccurred,
+    q, [ = ](QMediaPlayer::Error error, const QString &errorString) {
+        Q_UNUSED(errorString)
         qWarning() << error << activePlaylist << activeMeta;
         Q_EMIT q->mediaError(activePlaylist, activeMeta, static_cast<Player::Error>(error));
     });
 
-    q->connect(qplayer, &QMediaPlayer::stateChanged,
-    q, [ = ](QMediaPlayer::State state) {
+    q->connect(qplayer, &QMediaPlayer::playbackStateChanged,
+    q, [ = ](QMediaPlayer::PlaybackState state) {
 //        qDebug() << "change " << state;
         switch (state) {
         case QMediaPlayer::StoppedState:
@@ -285,6 +296,15 @@ void PlayerPrivate::initConnection()
             break;
         }
     });
+}
+
+void PlayerPrivate::applyVolume()
+{
+    if (!audioOutput) {
+        return;
+    }
+    audioOutput->setMuted(mute);
+    audioOutput->setVolume(volume * fadeInOutFactor / 100.0);
 }
 
 void PlayerPrivate::selectNext(const MetaPtr info, Player::PlaybackMode mode)
@@ -369,7 +389,7 @@ void Player::loadMedia(PlaylistPtr playlist, const MetaPtr meta)
     d->activePlaylist = playlist;
 
     d->qplayer->blockSignals(true);
-    d->qplayer->setMedia(QMediaContent(QUrl::fromLocalFile(meta->localPath)));
+    d->qplayer->setSource(QUrl::fromLocalFile(meta->localPath));
     d->qplayer->blockSignals(false);
     d->activePlaylist->play(meta);
 }
@@ -385,8 +405,9 @@ void Player::playMeta(PlaylistPtr playlist, const MetaPtr meta)
     d->activePlaylist = playlist;
 
     d->activeMeta = meta;
-    d->qplayer->setMedia(QMediaContent(QUrl::fromLocalFile(meta->localPath)));
+    d->qplayer->setSource(QUrl::fromLocalFile(meta->localPath));
     d->qplayer->setPosition(meta->offset);
+    d->applyVolume();
     d->activePlaylist->play(meta);
 
     DRecentData data;
@@ -411,7 +432,15 @@ void Player::resume(PlaylistPtr playlist, const MetaPtr meta)
     Q_ASSERT(meta->hash == d->activeMeta->hash);
 
     setPlayOnLoaded(true);
+    const qint64 resumePos = d->qplayer->position();
+    const QString resumePath = d->activeMeta ? d->activeMeta->localPath : QString();
     QTimer::singleShot(50, this, [ = ]() {
+        // 重建音频流而非复用被挂起的残留流，避免 Qt6 后端恢复旧流时的静音对齐期
+        if (!resumePath.isEmpty()) {
+            d->qplayer->setSource(QUrl::fromLocalFile(resumePath));
+            d->qplayer->setPosition(resumePos);
+        }
+        d->applyVolume();
         d->qplayer->play();
     });
 
@@ -495,7 +524,6 @@ void Player::stop()
     Q_D(Player);
 //    d->qplayer->blockSignals(true);
     d->qplayer->pause();
-    d->qplayer->setMedia(QMediaContent());
     d->qplayer->stop();
     //    d->qplayer->blockSignals(false);
 }
@@ -503,7 +531,7 @@ void Player::stop()
 Player::PlaybackStatus Player::status()
 {
     Q_D(const Player);
-    return static_cast<PlaybackStatus>(d->qplayer->state());
+    return static_cast<PlaybackStatus>(d->qplayer->playbackState());
 }
 
 bool Player::isActiveMeta(MetaPtr meta) const
@@ -556,7 +584,7 @@ Player::PlaybackMode Player::mode() const
 bool Player::muted() const
 {
     Q_D(const Player);
-    return d->qplayer->isMuted();
+    return d->audioOutput->isMuted();
 }
 
 qint64 Player::duration() const
@@ -598,14 +626,22 @@ void Player::setCanControl(bool canControl)
 
 void Player::setPosition(qlonglong position)
 {
-    Q_D(const Player);
+    Q_D(Player);
 
     if (d->activeMeta.isNull()) {
         return;
     }
 
+    // Qt6 的 QMediaPlayer 在暂停态下执行 seek 可能被后端异步自动恢复播放，
+    // 导致“暂停时拖动进度条却开始播放、但播放键仍显示暂停”的状态不一致。
+    // 标记 suppressResume，由 playbackStateChanged 回调在自动恢复时重新暂停。
+    const bool wasPlaying = (d->qplayer->playbackState() == QMediaPlayer::PlayingState);
+    if (!wasPlaying) {
+        d->suppressResume = true;
+    }
+
     if (d->qplayer->duration() == d->activeMeta->length) {
-        return d->qplayer->setPosition(position);
+        d->qplayer->setPosition(position);
     } else {
         d->qplayer->setPosition(position + d->activeMeta->offset);
     }
@@ -631,14 +667,17 @@ void Player::setVolume(double volume)
     d->volume = volume;
 
     d->qplayer->blockSignals(true);
-    d->qplayer->setVolume(d->volume * d->fadeInOutFactor);
+    d->applyVolume();
     d->qplayer->blockSignals(false);
+    Q_EMIT volumeChanged(volume);
 }
 
 void Player::setMuted(bool mute)
 {
     Q_D(Player);
-    d->qplayer->setMuted(mute);
+    d->mute = mute;
+    d->applyVolume();
+    Q_EMIT mutedChanged(mute);
 }
 
 void Player::setFadeInOutFactor(double fadeInOutFactor)
@@ -648,9 +687,9 @@ void Player::setFadeInOutFactor(double fadeInOutFactor)
 //    qDebug() << "setFadeInOutFactor" << fadeInOutFactor
 //             << d->volume *d->fadeInOutFactor << d->volume;
     d->qplayer->blockSignals(true);
-    d->qplayer->setVolume(d->volume * d->fadeInOutFactor);
+    d->applyVolume();
     d->qplayer->blockSignals(false);
-
+    Q_EMIT fadeInOutFactorChanged(fadeInOutFactor);
 }
 
 void Player::setFadeInOut(bool fadeInOut)

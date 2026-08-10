@@ -98,8 +98,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     auto contentLayout = new QStackedLayout();
     setContentLayout(contentLayout);
-    contentLayout->setContentsMargins(20, 20, 20, 20);
-    contentLayout->setMargin(0);
+    contentLayout->setContentsMargins(0, 0, 0, 0);
     contentLayout->setSpacing(0);
 
 //    connect(d->title, &DTitlebar::optionClicked, this, &MainWindow::optionClicked);

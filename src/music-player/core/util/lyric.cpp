@@ -22,6 +22,7 @@
 #include "lyric.h"
 
 #include <QString>
+#include <QtCore5Compat/QRegExp>
 
 // Check square element exists in |lrc| or not.
 bool HasNoTimeTag(const QString &lrc)

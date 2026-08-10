@@ -136,7 +136,7 @@ void DDropdown::setStatus(QString status)
     d->status = status;
 }
 
-void DDropdown::enterEvent(QEvent *event)
+void DDropdown::enterEvent(QEnterEvent *event)
 {
     setStatus("hover");
     QFrame::enterEvent(event);

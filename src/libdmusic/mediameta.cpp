@@ -85,21 +85,16 @@ QString lengthString(qint64 length)
 
 QString sizeString(qint64 sizeByte)
 {
-    QString text;
     if (sizeByte < 1024) {
-        text.sprintf("%.1fB", sizeByte / 1.0);
-        return text;
+        return QString::asprintf("%.1fB", sizeByte / 1.0);
     }
     if (sizeByte < 1024 * 1024) {
-        text.sprintf("%.1fK", sizeByte / 1024.0);
-        return text;
+        return QString::asprintf("%.1fK", sizeByte / 1024.0);
     }
     if (sizeByte < 1024 * 1024 * 1024) {
-        text.sprintf("%.1fM", sizeByte / 1024.0 / 1024.0);
-        return text;
+        return QString::asprintf("%.1fM", sizeByte / 1024.0 / 1024.0);
     }
-    text.sprintf("%.1fG", sizeByte / 1024.0 / 1024.0 / 1024.0);
-    return text;
+    return QString::asprintf("%.1fG", sizeByte / 1024.0 / 1024.0 / 1024.0);
 }
 
 QList<QByteArray> detectMetaEncodings(MetaPtr meta)

@@ -21,6 +21,8 @@
 
 #include "playlist.h"
 
+#include <algorithm>
+#include <cstdlib>
 #include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -73,12 +75,12 @@ const MetaPtrList shuffle(MetaPtrList &&musiclist, int seed)
     // to make sure music in the first half and second half is different every playlist
     // and same in the same playlist: for shuffle uniformity
     for (auto i = 0; i < size; ++i)
-        musiclist.swap(i, seed % size);
+        std::swap(musiclist[i], musiclist[seed % size]);
 
     for (auto i = 0; i < mid; ++i)
-        musiclist.swap(i, std::rand() % mid);
+        std::swap(musiclist[i], musiclist[std::rand() % mid]);
     for (auto i = mid; i < size; ++i)
-        musiclist.swap(i, mid + (std::rand() % (size - mid)));
+        std::swap(musiclist[i], musiclist[mid + (std::rand() % (size - mid))]);
     return musiclist;
 }
 
@@ -292,7 +294,7 @@ void Playlist::load()
 
     // remove invalid meta
     auto sortIDs = sortHashs.keys();
-    qSort(sortIDs.begin(), sortIDs.end());
+    std::sort(sortIDs.begin(), sortIDs.end());
 
     playlistMeta.sortMetas.clear();
     for (auto sortID : sortIDs) {
@@ -577,7 +579,7 @@ void Playlist::resort()
             sortList << playlistMeta.metas.value(id);
         }
 
-        qSort(sortList.begin(), sortList.end(),
+        std::sort(sortList.begin(), sortList.end(),
               getSortFunction(sortType, orderType));
 
         QMap<QString, int> hashIndexs;

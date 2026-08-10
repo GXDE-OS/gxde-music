@@ -23,6 +23,7 @@
 
 #include <QScopedPointer>
 #include <QFrame>
+#include <QEnterEvent>
 
 class DDropdownPrivate;
 class DDropdown : public QFrame
@@ -48,7 +49,7 @@ public slots:
     void setStatus(QString status);
 
 protected:
-    virtual void enterEvent(QEvent *event);
+    virtual void enterEvent(QEnterEvent *event);
     virtual void leaveEvent(QEvent *event);
     virtual void mouseReleaseEvent(QMouseEvent *event);
 

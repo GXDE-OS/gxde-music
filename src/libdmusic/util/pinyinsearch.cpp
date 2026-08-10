@@ -23,6 +23,7 @@
 
 #include <QFile>
 #include <QTextStream>
+#include <QtCore5Compat/QRegExp>
 #include <DPinyin>
 
 namespace DMusic

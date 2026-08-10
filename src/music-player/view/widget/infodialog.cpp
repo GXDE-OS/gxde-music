@@ -70,7 +70,7 @@ void InfoDialogPrivate::initUI()
 
     auto layout = new QVBoxLayout(q);
     layout->setSpacing(0);
-    layout->setMargin(5);
+    layout->setContentsMargins(5, 5, 5, 5);
 
     auto closeBt = new DWindowCloseButton;
     closeBt->setObjectName("InfoClose");
@@ -107,7 +107,7 @@ void InfoDialogPrivate::initUI()
     layout->addStretch();
 
     auto infogridLayout = new QGridLayout(infoGridFrame);
-    infogridLayout->setMargin(0);
+    infogridLayout->setContentsMargins(0, 0, 0, 0);
     infogridLayout->setHorizontalSpacing(5);
     infogridLayout->setVerticalSpacing(5);
     infogridLayout->setColumnStretch(0, 10);

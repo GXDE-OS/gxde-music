@@ -93,7 +93,7 @@ void Cover::paintEvent(QPaintEvent *)
     Q_D(const Cover);
 
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::HighQualityAntialiasing);
+    painter.setRenderHints(QPainter::Antialiasing);
     auto radius = d->m_radius;
     auto innerBorderColor = d->m_borderColor;
     auto outerBorderColor = d->m_shadowColor;
@@ -151,7 +151,7 @@ void Cover::setCoverPixmap(const QPixmap &pixmap)
     QPainterPath path;
     path.addRoundedRect(QRectF(0, 0, sz.width(), sz.height()), double(radius), double(radius));
     QPainter bkPainter(&maskPixmap);
-    bkPainter.setRenderHints(QPainter::Antialiasing | QPainter::HighQualityAntialiasing);
+    bkPainter.setRenderHints(QPainter::Antialiasing);
     bkPainter.fillPath(path, QBrush(Qt::red));
 
     QPainter::CompositionMode mode = QPainter::CompositionMode_SourceIn;

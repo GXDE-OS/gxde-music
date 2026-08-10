@@ -12,7 +12,7 @@ QT       -= gui
 
 TARGET      = netease-meta-search
 TEMPLATE    = lib
-CONFIG      += c++11 link_pkgconfig
+CONFIG      += c++17 link_pkgconfig
 DESTDIR     = $$BUILD_DIST/lib/$$APP_TARGET/plugins
 
 DEFINES += NETEASEMETASEARCH_LIBRARY

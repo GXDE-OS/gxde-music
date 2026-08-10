@@ -149,7 +149,6 @@ Presenter::Presenter(QObject *parent)
     : QObject(parent), d_ptr(new PresenterPrivate(this))
 {
     qRegisterMetaType<MetaPtr>();
-    qRegisterMetaTypeStreamOperators<MetaPtr>();
     qRegisterMetaType<MetaPtrList>();
     qRegisterMetaType<QList<MediaMeta>>();
     qRegisterMetaType<PlaylistMeta>();

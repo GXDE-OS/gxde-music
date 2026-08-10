@@ -41,10 +41,9 @@ void LyricLineDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 {
     painter->save();
     painter->setRenderHint(QPainter::Antialiasing);
-    painter->setRenderHint(QPainter::HighQualityAntialiasing);
 
-    painter->fillRect(option.rect, option.palette.background());
-    painter->setBrush(option.palette.foreground());
+    painter->fillRect(option.rect, option.palette.window());
+    painter->setBrush(option.palette.windowText());
 
 //    painter->setPen(Qt::blue);
 //    painter->drawRect(option.rect);
@@ -53,7 +52,7 @@ void LyricLineDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
         painter->setPen(option.palette.highlightedText().color());
 //        painter->setPen(Qt::blue);
     } else {
-        painter->setPen(option.palette.foreground().color());
+        painter->setPen(option.palette.windowText().color());
     }
     painter->drawText(option.rect,
                       Qt::AlignCenter | Qt::TextWordWrap,
@@ -67,7 +66,7 @@ QSize LyricLineDelegate::sizeHint(const QStyleOptionViewItem &option,
 {
     auto sh = QStyledItemDelegate::sizeHint(option, index);
     QFontMetrics fm(option.font);
-    auto textWidth = fm.width(index.data().toString());
+    auto textWidth = fm.horizontalAdvance(index.data().toString());
     auto widgetWidth = option.widget->width();
     auto row =  textWidth / widgetWidth;
     if (textWidth > row * widgetWidth) {

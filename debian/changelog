@@ -1,3 +1,9 @@
+gxde-music (4.0.1) UNRELEASED; urgency=medium
+
+  * 修复Qt6.10构建
+
+ -- CharOfString <root@charofstring.cc>  Fri, 09 Oct 2026 18:16:02 -0500
+
 gxde-music (4.0.0) UNRELEASED; urgency=medium
 
   [ zeqi ]

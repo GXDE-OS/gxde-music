@@ -28,6 +28,7 @@
 #include "mpriscontroller.h"
 
 #include <QDebug>
+#include <QRegExp>
 //#include <qqmlinfo.h>
 
 #include <QDBusConnection>

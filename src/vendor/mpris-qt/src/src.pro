@@ -5,6 +5,8 @@ TEMPLATE = lib
 CONFIG += qt link_pkgconfig
 
 QT = core dbus
+# Qt6 的 QRegExp 在 Core5Compat 里
+greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat
 
 #PKGCONFIG = dbusextended-qt5
 TARGET = $${MPRISQTLIB}

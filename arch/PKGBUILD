@@ -1,0 +1,42 @@
+# Maintainer: CharOfString <root@charofstring.cc>
+pkgname=gxde-music-git
+pkgver=4.0.1
+pkgrel=1
+pkgdesc='Awesome music player with brilliant and tweakful UI'
+arch=('x86_64' 'aarch64')
+url="https://github.com/GXDE-OS/gxde-music"
+license=('GPL-3.0-or-later')
+# 与 Debian 相同使用系统的 libmpris-qt6（Arch 中为 qt6mpris），不构建 vendor/mpris-qt
+# Like Debian, use the system libmpris-qt6 (qt6mpris on Arch) instead of
+# building vendor/mpris-qt.
+depends=('dtk2widget-qt6-git' 'dtk6core-git' 'qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-5compat'
+         'qt6mpris' 'icu' 'ffmpeg' 'taglib' 'libcue' 'hicolor-icon-theme' 'libgcc'
+         'libstdc++' 'glibc')
+makedepends=('git' 'pkgconf' 'qt6-tools')
+provides=('gxde-music')
+conflicts=('gxde-music')
+source=()
+sha512sums=()
+
+# 直接使用 PKGBUILD 所在的 git 仓库作为源码 ・ Build from the git checkout this PKGBUILD lives in.
+_srcroot() {
+  git -C "$startdir" rev-parse --show-toplevel
+}
+
+build() {
+  # 与 debian/rules 相同：先生成翻译，再用 qmake6 构建 ・ Same as debian/rules: generate translations, then build with qmake6.
+  (cd "$(_srcroot)/src/music-player" && ./update-translation.sh)
+  mkdir -p build
+  cd build
+  qmake6 "$(_srcroot)/gxde-music.pro" \
+    PREFIX=/usr \
+    DEFINES+="VERSION=$pkgver" \
+    QMAKE_CFLAGS_RELEASE="$CFLAGS" \
+    QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+    QMAKE_LFLAGS_RELEASE="$LDFLAGS"
+  make
+}
+
+package() {
+  make -C build INSTALL_ROOT="$pkgdir" install
+}

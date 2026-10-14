@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('dtk2widget-qt6-git' 'dtk6core-git' 'qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-5compat'
          'qt6mpris' 'icu' 'ffmpeg' 'taglib' 'libcue' 'hicolor-icon-theme' 'libgcc'
          'libstdc++' 'glibc')
-makedepends=('git' 'pkgconf' 'qt6-tools')
+makedepends=('git' 'pkgconf' 'qt6-tools' 'libx11' 'libxext')
 provides=('gxde-music')
 conflicts=('gxde-music')
 source=()

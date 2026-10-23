@@ -1,5 +1,5 @@
 Dtk--Widget--DSearchEdit {
-  border-radius: 4.0px;
+  border-radius: 4px;
   padding: 1px;
   padding-bottom: 0px;
   background: rgba(0, 0, 0, 10%);
@@ -19,7 +19,7 @@ Dtk--Widget--DSearchEdit #ClearIcon {
 }
 
 Dtk--Widget--DSearchEdit #Edit {
-  color: #303030;
+  color: rgba(0, 0, 0, 85%);
   font-size: 12px;
   padding-right: 15px;
   border: none;
@@ -27,14 +27,14 @@ Dtk--Widget--DSearchEdit #Edit {
 }
 
 Dtk--Widget--DSearchEdit QFrame#DEditInsideFrame {
-  border: 0px solid rgba(0, 0, 255, 0.0);
+  border: 0px solid rgba(44, 167, 248, 0.0);
   border-radius: 3px;
   background-color: white;
 }
 
 Dtk--Widget--DSearchEdit #PlaceHolder {
   font-size: 12px;
-  color: #303030;
+  color: rgba(0, 0, 0, 85%);
   margin: 0 0 0 3px;
 }
 
@@ -42,7 +42,7 @@ Dtk--Widget--DSearchEdit #PlaceHolder {
 /*-----------------------------------*/
 
 Dtk--Widget--DSearchEdit[viewname="lyric"] {
-  border-radius: 4.0px;
+  border-radius: 4px;
   background-color: transparent;
 }
 
@@ -70,7 +70,7 @@ Dtk--Widget--DSearchEdit[viewname="lyric"] #Edit {
 
 Dtk--Widget--DSearchEdit[viewname="lyric"] QFrame#DEditInsideFrame {
   background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 4.0px;
+  border-radius: 4px;
   border-color: rgba(255, 255, 255, 0.05);
   border: none;
 }

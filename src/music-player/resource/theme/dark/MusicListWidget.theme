@@ -4,21 +4,21 @@
 }
 
 #MusicListActionBar {
-  background-color: rgba(32, 32, 32, 1);
+  background-color: #202020;
 }
 
 #MusicListEmptyHits {
   font-size: 24px;
-  color: #d0d0d0;
+  color: rgba(255, 255, 255, 40%);
   qproperty-alignment: AlignCenter;
-  background-color: rgba(32, 32, 32, 1);
+  background-color: #202020;
 }
 
 #MusicListPlayAll {
   font-size: 12px;
   padding: 0 10 0 10;
   border: none;
-  border-radius: 3.0px;
+  border-radius: 4px;
   qproperty-icon: url(:/common/image/play_all.svg);
 }
 

@@ -36,6 +36,8 @@
 
 #include "searchedit.h"
 
+#include "../uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
 class TitlebarWidgetPrivate
@@ -71,13 +73,14 @@ TitlebarWidget::TitlebarWidget(QWidget *parent) :
     leftLayout->setSpacing(10);
     leftLayout->setContentsMargins(0, 0, 0, 0);
 
+    // 规则二：标题栏图标按钮与页脚图标按钮使用同一个尺寸
     auto iconLabel = new QLabel;
     iconLabel->setObjectName("TitleIcon");
-    iconLabel->setFixedSize(24, 24);
+    iconLabel->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->btBack = new QPushButton;
     d->btBack->setObjectName("TitleBack");
-    d->btBack->setFixedSize(24, 24);
+    d->btBack->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
     d->btBack->hide();
 
     leftLayout->addWidget(iconLabel, 0, Qt::AlignCenter);

@@ -56,6 +56,8 @@
 #include "widget/closeconfirmdialog.h"
 #include "helper/widgethellper.h"
 
+#include "uithemetoken.h"
+
 #include "importwidget.h"
 #include "musiclistwidget.h"
 #include "playlistwidget.h"
@@ -69,7 +71,7 @@ DWIDGET_USE_NAMESPACE
 
 const QString s_PropertyViewname = "viewname";
 const QString s_PropertyViewnameLyric = "lyric";
-static const int FooterHeight = 60;
+using UiToken::FooterHeight;
 static const int AnimationDelay = 400; //ms
 static const int BlurRadius = 25;
 
@@ -151,6 +153,8 @@ void MainFramePrivate::initMenu()
     });
 
     auto settings = new QAction(MainFrame::tr("Settings"), q);
+    // 规则三：设置不再只能靠鼠标点开，0 次点击即可直达
+    settings->setShortcut(QKeySequence(QStringLiteral("Ctrl+,")));
     q->connect(settings, &QAction::triggered, q, [ = ](bool) {
         auto configDialog = new DSettingsDialog(q);
         configDialog->setProperty("_d_QSSThemename", "dark");
@@ -186,6 +190,24 @@ void MainFramePrivate::initMenu()
         q->close();
     });
 
+    // 规则三：高频开关不再埋在"设置 -> 基本 -> 播放"里（原本需要 4 次以上点击），
+    // 直接提升为主菜单的一级开关，2 次点击即可切换
+    auto makeToggle = [q](const QString & text, const QString & key) {
+        auto action = new QAction(text, q);
+        action->setCheckable(true);
+        action->setChecked(MusicSettings::value(key).toBool());
+        q->connect(action, &QAction::triggered, q, [ = ](bool checked) {
+            MusicSettings::setOption(key, checked);
+            MusicSettings::sync();
+        });
+        return action;
+    };
+
+    auto autoPlayAction = makeToggle(MainFrame::tr("Autoplay"), "base.play.auto_play");
+    auto fadeAction = makeToggle(MainFrame::tr("Enable fade in/out"), "base.play.fade_in_out");
+    auto rememberAction = makeToggle(MainFrame::tr("Remember playback position"),
+                                     "base.play.remember_progress");
+
     auto titleMenu = new QMenu(q);
     titleMenu->setStyle(QStyleFactory::create("dlight"));
 
@@ -194,9 +216,21 @@ void MainFramePrivate::initMenu()
     titleMenu->addAction(addmusicfiles);
     titleMenu->addSeparator();
 
+    titleMenu->addAction(autoPlayAction);
+    titleMenu->addAction(fadeAction);
+    titleMenu->addAction(rememberAction);
+    titleMenu->addSeparator();
+
     titleMenu->addAction(colorModeAction);
     titleMenu->addAction(settings);
     titleMenu->addSeparator();
+
+    // 在设置对话框中改动后，菜单里的勾选状态保持同步
+    q->connect(titleMenu, &QMenu::aboutToShow, q, [ = ]() {
+        autoPlayAction->setChecked(MusicSettings::value("base.play.auto_play").toBool());
+        fadeAction->setChecked(MusicSettings::value("base.play.fade_in_out").toBool());
+        rememberAction->setChecked(MusicSettings::value("base.play.remember_progress").toBool());
+    });
 
     titlebar->setMenu(titleMenu);
 }
@@ -468,7 +502,7 @@ void MainFramePrivate::updateSize(QSize newSize)
         lyricWidget->resize(newSize);
         musicList->setFixedSize(newSize);
 
-        playlistWidget->setFixedSize(220, newSize.height() - FooterHeight - titleBarHeight);
+        playlistWidget->setFixedSize(UiToken::PlaylistPanelWidth, newSize.height() - FooterHeight - titleBarHeight);
         if (playlistWidget->isVisible()) {
             playlistWidget->hide();
         }

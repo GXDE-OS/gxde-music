@@ -1,5 +1,5 @@
 #ImportWidget {
-  background-color: rgba(32, 32, 32, 1);
+  background-color: #202020;
   border-radius: 4px;
 }
 
@@ -11,13 +11,13 @@
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
-  color: #979797;
+  color: rgba(255, 255, 255, 50%);
 }
 
 #ImportViewImportButton {
   font-family: SourceHanSansSC-Medium;
   font-size: 14px;
-  color: #0599FF;
+  color: #2ca7f8;
   border-image: url(:/dark/image/suggest_button_normal.svg);
 }
 

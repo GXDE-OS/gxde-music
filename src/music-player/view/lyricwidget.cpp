@@ -45,6 +45,8 @@
 #include "widget/searchmetaitem.h"
 #include "widget/lyricview.h"
 
+#include "uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
 static const int LyricLineHeight = 40;
@@ -358,7 +360,7 @@ void LyricWidget::paintEvent(QPaintEvent *e)
 
 //    auto optical = d->lyricview->optical();
 
-    QBrush brush(QColor(255, 255, 255, 25));
+    QBrush brush(UiToken::foreground(0.1));
 //    brush = QBrush(QColor(255, 255, 25, 255));
     auto hcenter = d->lyricview->y() + d->lyricview->height() / 2;
     auto xstart = d->lyricview->x();

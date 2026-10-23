@@ -26,6 +26,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QPainterPath>
 
+#include "../uithemetoken.h"
+
 static auto borderPenWidth = 1.0;
 
 class CoverPrivate
@@ -50,9 +52,10 @@ Cover::Cover(QWidget *parent)
     Q_D(Cover);
 
     QWidget::setAttribute(Qt::WA_TranslucentBackground, true);
-    d->m_radius = 4;
-    d->m_borderColor = QColor(255, 0, 0, 152);
-    d->m_shadowColor = QColor(0, 255, 0, 126);
+    d->m_radius = UiToken::Radius;
+    // 规则一：边框与阴影只能由前景色/背景色派生，不再引入红/绿等额外色相
+    d->m_borderColor = UiToken::foreground(0.6);
+    d->m_shadowColor = UiToken::background(0.5);
 
 //    QGraphicsDropShadowEffect *bodyShadow = new QGraphicsDropShadowEffect;
 //    bodyShadow->setBlurRadius(4.0);
@@ -97,7 +100,7 @@ void Cover::paintEvent(QPaintEvent *)
     auto radius = d->m_radius;
     auto innerBorderColor = d->m_borderColor;
     auto outerBorderColor = d->m_shadowColor;
-    auto backgroundColor = QColor(255, 255, 255, 255);
+    auto backgroundColor = UiToken::background();
     auto penWidthf = borderPenWidth;
 
     // draw background

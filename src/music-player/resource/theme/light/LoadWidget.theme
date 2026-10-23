@@ -6,5 +6,5 @@ LoadWidget {
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
-  color: #979797;
+  color: rgba(0, 0, 0, 50%);
 }

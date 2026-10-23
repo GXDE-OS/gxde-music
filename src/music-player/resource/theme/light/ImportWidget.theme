@@ -11,13 +11,13 @@
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
-  color: #979797;
+  color: rgba(0, 0, 0, 50%);
 }
 
 #ImportViewImportButton {
   font-family: SourceHanSansSC-Medium;
   font-size: 14px;
-  color: #0599FF;
+  color: #2ca7f8;
   border-image: url(:/light/image/suggest_button_normal.svg);
 }
 

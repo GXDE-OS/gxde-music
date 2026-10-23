@@ -3,7 +3,7 @@
 }
 
 #MusicListSort[status="hover"] {
-  border-radius: 4.0px;
+  border-radius: 4px;
 }
 
 #DDropdownText {

@@ -5,8 +5,8 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-            <stop stop-color="#0B8CFF" offset="0%"></stop>
-            <stop stop-color="#0AA1FF" offset="100%"></stop>
+            <stop stop-color="#2CA7F8" offset="0%"></stop>
+            <stop stop-color="#2CA7F8" offset="100%"></stop>
         </linearGradient>
         <rect id="path-2" x="1" y="3" width="140" height="36" rx="4"></rect>
         <filter x="-1.4%" y="-2.8%" width="102.9%" height="111.1%" filterUnits="objectBoundingBox" id="filter-3">
@@ -21,7 +21,7 @@
             <g id="Mask">
                 <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
                 <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <rect stroke-opacity="0.3" stroke="#1D82FF" stroke-width="1" x="1.5" y="3.5" width="139" height="35" rx="4"></rect>
+                <rect stroke-opacity="0.3" stroke="#2CA7F8" stroke-width="1" x="1.5" y="3.5" width="139" height="35" rx="4"></rect>
             </g>
         </g>
     </g>

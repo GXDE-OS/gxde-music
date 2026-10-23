@@ -34,6 +34,8 @@
 #include "../musiclistview.h"
 #include "core/medialibrary.h"
 
+#include "../../uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
 const int MusicItemLeftMargin = 15;
@@ -219,10 +221,9 @@ void MusicItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 
     painter->save();
 
-    QFont font11 = option.font;
-    font11.setPixelSize(11);
-    QFont font12 = option.font;
-    font12.setPixelSize(12);
+    // 规则二：同一行文本只允许一种字号
+    QFont rowFont = option.font;
+    rowFont.setPixelSize(UiToken::BodyFontSize);
 
     painter->setRenderHint(QPainter::Antialiasing);
 
@@ -285,37 +286,34 @@ void MusicItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
             break;
         }
         case Title: {
-            painter->setFont(font12);
-            QFont font(font12);
-            QFontMetrics fm(font);
+            painter->setFont(rowFont);
+            QFontMetrics fm(rowFont);
             auto text = fm.elidedText(meta->title, Qt::ElideMiddle, rect.width());
             painter->drawText(rect, flag, text);
             break;
         }
         case Artist: {
-            painter->setFont(font11);
+            painter->setFont(rowFont);
             auto str = meta->artist.isEmpty() ?
                        MusicListView::tr("Unknown artist") :
                        meta->artist;
-            QFont font(font11);
-            QFontMetrics fm(font);
+            QFontMetrics fm(rowFont);
             auto text = fm.elidedText(str, Qt::ElideMiddle, rect.width());
             painter->drawText(rect, flag, text);
             break;
         }
         case Album: {
-            painter->setFont(font11);
+            painter->setFont(rowFont);
             auto str = meta->album.isEmpty() ?
                        MusicListView::tr("Unknown album") :
                        meta->album;
-            QFont font(font11);
-            QFontMetrics fm(font);
+            QFontMetrics fm(rowFont);
             auto text = fm.elidedText(str, Qt::ElideMiddle, rect.width());
             painter->drawText(rect, flag, text);
             break;
         }
         case Length:
-            painter->setFont(font11);
+            painter->setFont(rowFont);
             painter->drawText(rect, flag, DMusic::lengthString(meta->length));
             break;
         default:

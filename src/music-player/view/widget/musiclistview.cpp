@@ -335,6 +335,21 @@ void MusicListView::showContextMenu(const QPoint &pos,
         playAction = myMenu.addAction(tr("Play"));
     }
     myMenu.addAction(tr("Add to playlist"))->setMenu(&playlistMenu);
+
+    // 规则三："新建歌单并添加"原本藏在二级子菜单里（3 次点击），
+    // 提升为一级菜单项后 2 次点击即可完成
+    auto addToNewPlaylist = myMenu.addAction(tr("Add to new playlist"));
+    connect(addToNewPlaylist, &QAction::triggered, this, [ = ](bool) {
+        MetaPtrList metalist;
+        for (auto &index : selection->selectedRows()) {
+            auto meta = d->model->meta(index);
+            if (!meta.isNull()) {
+                metalist << meta;
+            }
+        }
+        Q_EMIT addToPlaylist(PlaylistPtr(), metalist);
+    });
+
     myMenu.addSeparator();
 
     QAction *displayAction = nullptr;

@@ -32,9 +32,14 @@
 
 #include <DThemeManager>
 
+#include "uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
-const QString linkTemplate = "<a href='%1' style='text-decoration: none; color: #0082FA; '>%2</a>";
+// 规则一：可点击文本只允许使用主色
+const QString linkTemplate =
+    QStringLiteral("<a href='%1' style='text-decoration: none; color: ") + UiToken::accentName()
+    + QStringLiteral("; '>%2</a>");
 
 class ImportWidgetPrivate
 {

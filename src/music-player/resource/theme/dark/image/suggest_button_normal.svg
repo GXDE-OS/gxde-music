@@ -10,7 +10,7 @@
         <g id="suggest_button_big_dark">
             <g id="Mask">
                 <use fill-opacity="0.05" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke-opacity="0.5" stroke="#0084FF" stroke-width="1" x="1.5" y="3.5" width="139" height="35" rx="4"></rect>
+                <rect stroke-opacity="0.5" stroke="#2CA7F8" stroke-width="1" x="1.5" y="3.5" width="139" height="35" rx="4"></rect>
             </g>
         </g>
     </g>

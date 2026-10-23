@@ -24,15 +24,15 @@
   qproperty-alignment: AlignLeft;
   font-size: 12px;
   border: none;
-  color: #afafaf;
+  color: rgba(255, 255, 255, 50%);
   background: transparent;
 }
 
 #PlayListTitle[status="active"] {
-  color: #009aff;
+  color: #2ca7f8;
 }
 
 #PlayListTitle:focus[status="active"] {
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 4.0px;
+  border-radius: 4px;
 }

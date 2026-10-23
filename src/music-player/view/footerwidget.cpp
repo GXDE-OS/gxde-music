@@ -47,6 +47,8 @@
 #include "widget/cover.h"
 #include "widget/soundvolume.h"
 
+#include "uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
 static const char *sPropertyFavourite         = "fav";
@@ -117,7 +119,7 @@ void FooterPrivate::installTipHint(QWidget *w, const QString &hintstr)
     auto hintWidget = new Dtk::Widget::DToast(q->parentWidget());
     hintWidget->layout()->setContentsMargins(10, 0, 10, 0);
     hintWidget->setText(hintstr);
-    hintWidget->setFixedHeight(32);
+    hintWidget->setFixedHeight(UiToken::HintHeight);
     installHint(w, hintWidget);
 }
 
@@ -214,15 +216,15 @@ Footer::Footer(QWidget *parent) :
     d->progress->setValue(0);
 
     auto layout = new QHBoxLayout();
-    layout->setContentsMargins(10, 0, 20, 0);
-    layout->setSpacing(20);
+    layout->setContentsMargins(10, 0, UiToken::Spacing, 0);
+    layout->setSpacing(UiToken::Spacing);
 
     auto stackedLayout = new QStackedLayout;
     stackedLayout->setStackingMode(QStackedLayout::StackAll);
 
     d->cover = new Cover(this);
     d->cover->setObjectName("FooterCover");
-    d->cover->setFixedSize(40, 40);
+    d->cover->setFixedSize(UiToken::FooterCoverSize, UiToken::FooterCoverSize);
     d->cover->setRadius(0);
 
     d->btCover = new QPushButton();
@@ -244,25 +246,26 @@ Footer::Footer(QWidget *parent) :
     d->artist->setMaximumWidth(240);
     d->artist->setText(tr("Unknown artist"));
 
+    // 规则二：页脚所有图标按钮只允许一种尺寸
     d->btPlay = new QPushButton;
     d->btPlay->setObjectName("FooterActionPlay");
-    d->btPlay->setFixedSize(30, 30);
+    d->btPlay->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->btPrev = new QPushButton;
     d->btPrev->setObjectName("FooterActionPrev");
-    d->btPrev->setFixedSize(30, 30);
+    d->btPrev->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->btNext = new QPushButton;
     d->btNext->setObjectName("FooterActionNext");
-    d->btNext->setFixedSize(30, 30);
+    d->btNext->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->btFavorite = new QPushButton;
     d->btFavorite->setObjectName("FooterActionFavorite");
-    d->btFavorite->setFixedSize(24, 24);
+    d->btFavorite->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->btLyric = new QPushButton;
     d->btLyric->setObjectName("FooterActionLyric");
-    d->btLyric->setFixedSize(24, 24);
+    d->btLyric->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     QStringList modes;
     modes /*<< ":/image/sequence"*/
@@ -271,17 +274,17 @@ Footer::Footer(QWidget *parent) :
             << ":/image/shuffle";
     d->btPlayMode = new ModeButton;
     d->btPlayMode->setObjectName("FooterActionPlayMode");
-    d->btPlayMode->setFixedSize(24, 24);
+    d->btPlayMode->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
     d->btPlayMode->setModeIcons(modes);
 
     d->btSound = new QPushButton;
     d->btSound->setObjectName("FooterActionSound");
-    d->btSound->setFixedSize(24, 24);
+    d->btSound->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
     d->btSound->setProperty("volume", "mid");
 
     d->btPlayList = new QPushButton;
     d->btPlayList->setObjectName("FooterActionPlayList");
-    d->btPlayList->setFixedSize(24, 24);
+    d->btPlayList->setFixedSize(UiToken::IconButtonSize, UiToken::IconButtonSize);
 
     d->hoverShadowFilter = new HoverShadowFilter;
     d->title->installEventFilter(d->hoverShadowFilter);
@@ -320,7 +323,7 @@ Footer::Footer(QWidget *parent) :
 //    d->ctlWidget->setStyleSheet("border: 1px solid red;");
     auto ctlLayout = new QHBoxLayout(d->ctlWidget);
     ctlLayout->setContentsMargins(0, 0, 0, 0);
-    ctlLayout->setSpacing(30);
+    ctlLayout->setSpacing(UiToken::Spacing);
     ctlLayout->addWidget(d->btPrev, 0, Qt::AlignCenter);
     ctlLayout->addWidget(d->btPlay, 0, Qt::AlignCenter);
     ctlLayout->addWidget(d->btNext, 0, Qt::AlignCenter);
@@ -329,7 +332,7 @@ Footer::Footer(QWidget *parent) :
     auto actWidget = new QWidget;
     auto actLayout = new QHBoxLayout(actWidget);
     actLayout->setContentsMargins(0, 0, 0, 0);
-    actLayout->setSpacing(20);
+    actLayout->setSpacing(UiToken::Spacing);
     actLayout->addWidget(d->btFavorite, 0, Qt::AlignRight | Qt::AlignVCenter);
     actLayout->addWidget(d->btLyric, 0, Qt::AlignRight | Qt::AlignVCenter);
     actLayout->addWidget(d->btPlayMode, 0, Qt::AlignRight | Qt::AlignVCenter);
@@ -351,7 +354,7 @@ Footer::Footer(QWidget *parent) :
 
     auto controlFrame = new QFrame;
     controlFrame->setObjectName("FooterControlFrame");
-    controlFrame->setFixedHeight(60 - d->progress->height() / 2);
+    controlFrame->setFixedHeight(UiToken::FooterHeight - d->progress->height() / 2);
     controlFrame->setLayout(layout);
 
     mainVBoxlayout->addStretch();

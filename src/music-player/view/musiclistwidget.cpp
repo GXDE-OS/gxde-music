@@ -39,6 +39,8 @@
 #include "widget/musiclistview.h"
 #include "widget/ddropdown.h"
 
+#include "uithemetoken.h"
+
 DWIDGET_USE_NAMESPACE
 
 class MusicListWidgetPrivate
@@ -161,7 +163,7 @@ MusicListWidget::MusicListWidget(QWidget *parent) :
     layout->setSpacing(0);
 
     d->actionBar = new QFrame;
-    d->actionBar->setFixedHeight(40);
+    d->actionBar->setFixedHeight(UiToken::ActionBarHeight);
     d->actionBar->setObjectName("MusicListActionBar");
     d->actionBar->hide();
 
@@ -254,7 +256,7 @@ void MusicListWidget::resizeEvent(QResizeEvent *event)
     QFrame::resizeEvent(event);
     auto viewrect = QFrame::rect();
     auto viewsize = viewrect.marginsRemoved(contentsMargins()).size();
-    d->musiclist->setFixedSize(viewsize.width(), viewsize.height() - 40);
+    d->musiclist->setFixedSize(viewsize.width(), viewsize.height() - UiToken::ActionBarHeight);
     d->emptyHits->setFixedSize(viewsize.width(), viewsize.height());
 }
 

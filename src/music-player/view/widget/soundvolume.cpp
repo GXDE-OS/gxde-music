@@ -36,6 +36,8 @@
 
 #include "core/player.h"
 
+#include "../uithemetoken.h"
+
 using namespace Dtk::Widget;
 
 class SoundVolumePrivate
@@ -45,9 +47,10 @@ public:
 
     SoundVolume *q_ptr;
     QSlider     *volSlider  = nullptr;
-    QBrush      background;
-    QColor      borderColor = QColor(0, 0, 0,  255 * 2 / 10);
-    int         radius      = 4;
+    QBrush      background  = QBrush(UiToken::background());
+    // 规则一：边框与阴影只允许由前景色/背景色派生
+    QColor      borderColor = UiToken::foreground(0.2);
+    int         radius      = UiToken::Radius;
     bool        mouseIn     = false;
 
     Q_DECLARE_PUBLIC(SoundVolume)
@@ -59,7 +62,8 @@ SoundVolume::SoundVolume(QWidget *parent) : QWidget(parent), d_ptr(new SoundVolu
     setObjectName("SoundVolume");
     setProperty("_dm_keep_on_click", true);
 
-    setFixedSize(40, 106);
+    // 规则二：同一元素只允许一种尺寸，尺寸只在令牌中定义一次
+    setFixedSize(UiToken::SoundVolumeWidth, UiToken::SoundVolumeHeight);
     auto layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 5, 0, 11);
     layout->setSpacing(0);
@@ -69,16 +73,15 @@ SoundVolume::SoundVolume(QWidget *parent) : QWidget(parent), d_ptr(new SoundVolu
     d->volSlider->setMaximum(100);
     d->volSlider->setSingleStep(Player::VolumeStep);
     d->volSlider->setValue(50);
-    d->volSlider->setFixedHeight(90);
+    d->volSlider->setFixedHeight(UiToken::SoundVolumeSliderHeight);
 
     layout->addStretch();
     layout->addWidget(d->volSlider, 0, Qt::AlignCenter);
     layout->addStretch();
-    setFixedSize(24, 106);
 
     auto *bodyShadow = new QGraphicsDropShadowEffect;
     bodyShadow->setBlurRadius(10.0);
-    bodyShadow->setColor(QColor(0, 0, 0,  255 / 10));
+    bodyShadow->setColor(UiToken::background(0.1));
     bodyShadow->setOffset(0, 2.0);
     this->setGraphicsEffect(bodyShadow);
 

@@ -1,5 +1,5 @@
 SearchMetaItem {
-  border-radius: 4.0px;
+  border-radius: 4px;
   border: none;
   border: 0px solid rgba(0, 0, 0, 0.5);
 }
@@ -15,7 +15,7 @@ SearchMetaItem {
 }
 
 #SearchMetaItemArtist {
-  font-size: 10px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -29,6 +29,6 @@ SearchMetaItem {
 }
 
 #SearchMetaItemLength {
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }

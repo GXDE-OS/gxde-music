@@ -3,7 +3,7 @@ Dtk--Widget--DComboBox {
   border-color: black;
   border-radius: 4px;
   padding: 1px 1px 1px 4px;
-  color: #b4b4b4;
+  color: rgba(255, 255, 255, 60%);
   font-size: 12px;
   qproperty-insensitiveTickImg: url(:/images/dark/images/tick_insensitive.svg);
   qproperty-hoverTickImg: url(:/images/dark/images/tick_hover.svg);
@@ -14,7 +14,7 @@ Dtk--Widget--DComboBox {
 
 Dtk--Widget--DComboBox:!editable,
 DComboBox::drop-down:editable {
-  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #272727, stop: 1.0 #191919);
+  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #202020, stop: 1.0 #202020);
   /*combobox-popup: 0;*/
 }
 
@@ -23,7 +23,7 @@ DComboBox::drop-down:editable {
 
 Dtk--Widget--DComboBox:!editable:on,
 DComboBox::drop-down:editable:on {
-  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #181818, stop: 1.0 #282828);
+  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #202020, stop: 1.0 #202020);
 }
 
 QAbstractItemView#DComboBoxItemView {
@@ -35,12 +35,12 @@ QAbstractItemView#DComboBoxItemView {
 
 QComboBoxPrivateContainer {
   border: 1px solid black;
-  background-color: #191919;
+  background-color: #202020;
 }
 
 QAbstractItemView#DComboBoxItemView::item {
   min-height: 24;
-  color: #b4b4b4;
+  color: rgba(255, 255, 255, 60%);
 }
 
 Dtk--Widget--DComboBox::drop-down {
@@ -62,7 +62,7 @@ Dtk--Widget--DComboBox::down-arrow:hover {
 }
 
 QAbstractItemView Dtk--Widget--DComboBoxItem {
-  color: #b4b4b4;
+  color: rgba(255, 255, 255, 60%);
   font-size: 12px;
   margin-left: 24;
   margin-bottom: 3;
@@ -73,11 +73,11 @@ QAbstractItemView Dtk--Widget--DComboBoxItem[hovered="true"] {
 }
 
 QAbstractItemView Dtk--Widget--DComboBoxItem[checked="true"] {
-  color: #01BDFF;
+  color: #2ca7f8;
 }
 
 #DComboBoxTitleMask {
-  color: #b4b4b4;
+  color: rgba(255, 255, 255, 60%);
   padding-left: 10px;
 }
 
@@ -98,7 +98,7 @@ QFrame#DComboxInsideFrame {
 }
 
 QFrame#ComboboxPopupTopEnd {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #202020;
   border-top-left-radius: 4;
   border-top-right-radius: 4;
   background: transparent url(:/images/dark/images/combobox_up_arrow.svg);
@@ -107,7 +107,7 @@ QFrame#ComboboxPopupTopEnd {
 }
 
 QFrame#ComboboxPopupBottomEnd {
-  border-top: 1px solid #222;
+  border-top: 1px solid #202020;
   border-bottom-left-radius: 4;
   border-bottom-right-radius: 4;
   background: transparent url(:/images/dark/images/combobox_down_arrow.svg);
@@ -117,7 +117,7 @@ QFrame#ComboboxPopupBottomEnd {
 
 Dtk--Widget--DComboBox:editable {
   border: 2px solid transparent;
-  border-bottom: 1px solid #15FFFFFF;
+  border-bottom: 1px solid rgba(255, 255, 255, 8%);
   padding: 0px 0px 1px 0px;
   min-height: 21px;
   background-color: rgba(255, 255, 255, 26);
@@ -136,5 +136,5 @@ Dtk--Widget--DComboBox[editable="true"] QFrame#DComboxInsideFrame {
 }
 
 Dtk--Widget--DComboBox[alert="true"] QFrame#DComboxInsideFrame {
-  border-color: #FF8F00;
+  border-color: #2ca7f8;
 }

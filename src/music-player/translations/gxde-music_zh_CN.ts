@@ -291,6 +291,18 @@
         <source>Next</source>
         <translation>下一首</translation>
     </message>
+    <message>
+        <source>Autoplay</source>
+        <translation>自动播放</translation>
+    </message>
+    <message>
+        <source>Enable fade in/out</source>
+        <translation>启用淡入淡出</translation>
+    </message>
+    <message>
+        <source>Remember playback position</source>
+        <translation>记住播放进度</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -387,6 +399,10 @@
         <location filename="../view/widget/delegate/musicitemdelegate.cpp" line="310"/>
         <source>Unknown album</source>
         <translation>未知专辑</translation>
+    </message>
+    <message>
+        <source>Add to new playlist</source>
+        <translation>添加到新建歌单</translation>
     </message>
 </context>
 <context>

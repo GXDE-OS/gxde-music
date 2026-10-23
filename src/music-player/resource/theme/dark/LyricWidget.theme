@@ -11,7 +11,7 @@
 }
 
 #SearchMetaFrame {
-  border: 0px solid rgba(29, 129, 255, 0.5);
+  border: 0px solid rgba(44, 167, 248, 0.5);
 }
 
 #SearchMetaHeader {
@@ -25,7 +25,7 @@
   color: white;
   font-size: 12px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4.0px;
+  border-radius: 4px;
 }
 
 #SearchMetaArtist {
@@ -33,7 +33,7 @@
   color: white;
   font-size: 12px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4.0px;
+  border-radius: 4px;
 }
 
 #SearchMetaButton {
@@ -42,13 +42,13 @@
   border-radius: 4px;
   color: white;
   background-color: qlineargradient(x1: 0 y1: 0, x2: 0 y2: 1, stop: 0.0000 rgba(255, 255, 255, 0.20), stop: 1.0000 rgba(255, 255, 255, 0.20));
-  border: 0px solid rgba(29, 129, 255, 0.5);
+  border: 0px solid rgba(44, 167, 248, 0.5);
 }
 
 #SearchMetaButton:hover {
   color: white;
   background-color: qlineargradient(x1: 0 y1: 0, x2: 0 y2: 1, stop: 0.0000 rgba(255, 255, 255, 0.30), stop: 1.0000 rgba(255, 255, 255, 0.30));
-  border: 0px solid rgba(29, 129, 255, 0.3);
+  border: 0px solid rgba(44, 167, 248, 0.3);
 }
 
 #SearchMetaButton:pressed {
@@ -60,7 +60,7 @@
 #SearchMetaButton:disabled {
   color: rgba(255, 255, 255, 40%);
   background-color: qlineargradient(x1: 0 y1: 0, x2: 0 y2: 1, stop: 0.0000 rgba(255, 255, 255, 0.08), stop: 1.0000 rgba(255, 255, 255, 0.08));
-  border: 0px solid rgba(29, 129, 255, 0.5);
+  border: 0px solid rgba(44, 167, 248, 0.5);
 }
 
 #ShowSearch {
@@ -87,5 +87,5 @@
 }
 
 #ExitSearch:pressed {
-  color: #0082fa;
+  color: #2ca7f8;
 }

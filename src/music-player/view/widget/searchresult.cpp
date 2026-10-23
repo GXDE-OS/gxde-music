@@ -33,6 +33,8 @@
 
 #include "pushbutton.h"
 
+#include "../uithemetoken.h"
+
 SearchResult::SearchResult(QWidget *parent) : QFrame(parent)
 {
     DThemeManager::instance()->registerWidget(this);
@@ -78,7 +80,7 @@ SearchResult::SearchResult(QWidget *parent) : QFrame(parent)
 
     auto *bodyShadow = new QGraphicsDropShadowEffect;
     bodyShadow->setBlurRadius(9.0);
-    bodyShadow->setColor(QColor(0, 0, 0, 0.15 * 255));
+    bodyShadow->setColor(UiToken::background(0.15));
     bodyShadow->setOffset(0, 4.0);
 //    this->setGraphicsEffect(bodyShadow);
 

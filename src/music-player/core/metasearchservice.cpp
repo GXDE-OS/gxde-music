@@ -24,6 +24,8 @@
 #include <QDebug>
 #include <QUrl>
 #include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
 
@@ -31,6 +33,7 @@
 #include <metasearchengine.h>
 
 #include "util/global.h"
+#include "musicsettings.h"
 #include "pluginmanager.h"
 
 
@@ -38,6 +41,23 @@ static QString cacheLyricPath(const MetaPtr meta)
 {
     auto cacheLyricDir = Global::cacheDir() + "/lyric";
     return cacheLyricDir + "/" + meta->searchID + ".lyric";
+}
+
+// local lyric file with the same name as the audio, e.g. /path/to/song.lrc
+static QString localLyricPath(const MetaPtr meta)
+{
+    if (meta->localPath.isEmpty()) {
+        return QString();
+    }
+    QFileInfo audioFile(meta->localPath);
+    if (!audioFile.exists()) {
+        return QString();
+    }
+    QFileInfo lyricInfo(audioFile.dir().filePath(audioFile.completeBaseName() + ".lrc"));
+    if (lyricInfo.exists() && lyricInfo.size() > 0) {
+        return lyricInfo.absoluteFilePath();
+    }
+    return QString();
 }
 
 inline QString cacheCoverPath(const MetaPtr meta)
@@ -104,6 +124,18 @@ void MetaSearchService::init()
         });
         connect(engine, &DMusic::Plugin::MetaSearchEngine::lyricLoaded,
         this, [ = ](const MetaPtr  meta, const DMusic::SearchMeta & search,  QByteArray lyricData) {
+            // online lyric is disabled, drop the result silently
+            if (!MusicSettings::value("base.play.online_lyric").toBool()) {
+                qDebug() << "online lyric disabled, ignore lyric result for" << meta->title;
+                return;
+            }
+            // the engine may still return a lyric while searching for the
+            // cover, local lyric always wins over it
+            if (!localLyricPath(meta).isEmpty()) {
+                qDebug() << "local lyric exists, ignore lyric result for" << meta->title;
+                return;
+            }
+
             if (lyricData.length() > 0) {
             } else {
                 // can not found lyric, write empty
@@ -198,11 +230,30 @@ void MetaSearchService::searchMeta(const MetaPtr meta)
     bool needlyric = false;
     bool needCover = false;
 
-    if (0 != d->searchCacheLyric(meta)) {
+    // local lyric file (xxx.lrc next to the audio) always wins over
+    // the cached and the online one
+    bool hasLocalLyric = false;
+    auto localLrc = localLyricPath(meta);
+    if (!localLrc.isEmpty()) {
+        QFile lyricFile(localLrc);
+        if (lyricFile.open(QIODevice::ReadOnly)) {
+            auto localData = lyricFile.readAll();
+            lyricFile.close();
+            if (!localData.trimmed().isEmpty()) {
+                Q_EMIT lyricSearchFinished(meta, DMusic::SearchMeta(meta->searchID), localData);
+                hasLocalLyric = true;
+            }
+        }
+    }
+    if (!hasLocalLyric && 0 != d->searchCacheLyric(meta)) {
         needlyric = true;
     }
     if (0 != d->searchCacheCover(meta)) {
         needCover = true;
+    }
+    // online lyric can be disabled in settings
+    if (needlyric && !MusicSettings::value("base.play.online_lyric").toBool()) {
+        needlyric = false;
     }
     if (!needCover && !needlyric) {
         return;

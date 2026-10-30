@@ -542,6 +542,11 @@
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="30"/>
+        <source>Get lyrics online</source>
+        <translation>線上取得歌詞</translation>
+    </message>
+    <message>
+        <location filename="../view/widget/settingsdialog.cpp" line="30"/>
         <source>Remember playback position</source>
         <translation>記住播放位置</translation>
     </message>

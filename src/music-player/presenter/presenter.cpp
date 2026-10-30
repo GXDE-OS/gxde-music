@@ -77,6 +77,18 @@ void PresenterPrivate::initBackend()
 
     settings = MusicSettings::instance();
 
+    // apply the lyric setting change to the current song immediately
+    connect(MusicSettings::settings(), &Dtk::Core::DSettings::valueChanged,
+    this, [ = ](const QString & key, const QVariant & value) {
+        Q_UNUSED(value);
+        if (key == "base.play.online_lyric") {
+            auto activeMeta = Player::instance()->activeMeta();
+            if (!activeMeta.isNull()) {
+                Q_EMIT requestMetaSearch(activeMeta);
+            }
+        }
+    });
+
     library = MediaLibrary::instance();
     library->init();
     ThreadPool::instance()->moveToNewThread(MediaLibrary::instance());

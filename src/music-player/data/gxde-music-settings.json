@@ -30,6 +30,13 @@
                             "default": true
                         },
                         {
+                            "key": "online_lyric",
+                            "name": " ",
+                            "type": "checkbox",
+                            "text": "Get lyrics online",
+                            "default": true
+                        },
+                        {
                             "key": "sort_type",
                             "hide": true,
                             "reset": false,

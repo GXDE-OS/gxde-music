@@ -117,6 +117,7 @@ HEADERS += \
     core/util/threadpool.h \
     view/footerwidget.h \
     view/loadwidget.h \
+    view/uithemetoken.h \
     view/widget/closeconfirmdialog.h \
     view/widget/delegate/musicitemdelegate_p.h \
     core/musicsettings.h

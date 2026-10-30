@@ -516,6 +516,11 @@
     </message>
     <message>
         <location filename="../view/widget/settingsdialog.cpp" line="30" />
+        <source>Get lyrics online</source>
+        <translation>Get lyrics online</translation>
+    </message>
+    <message>
+        <location filename="../view/widget/settingsdialog.cpp" line="31" />
         <source>Remember playback position</source>
         <translation>Remember playback position</translation>
     </message>

@@ -1,5 +1,5 @@
 # Maintainer: CharOfString <root@charofstring.cc>
-pkgname=gxde-music-git
+pkgname=gxde-music
 pkgver=4.0.3
 pkgrel=1
 pkgdesc='Awesome music player with brilliant and tweakful UI'
@@ -9,12 +9,13 @@ license=('GPL-3.0-or-later')
 # 与 Debian 相同使用系统的 libmpris-qt6（Arch 中为 qt6mpris），不构建 vendor/mpris-qt
 # Like Debian, use the system libmpris-qt6 (qt6mpris on Arch) instead of
 # building vendor/mpris-qt.
-depends=('dtk2widget-qt6-git' 'dtk6core-git' 'qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-5compat'
+depends=('dtk2widget-qt6' 'gxde-dtk6core' 'qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-5compat'
          'qt6mpris' 'icu' 'ffmpeg' 'taglib' 'libcue' 'hicolor-icon-theme' 'libgcc'
          'libstdc++' 'glibc')
 makedepends=('git' 'pkgconf' 'qt6-tools' 'libx11' 'libxext')
-provides=('gxde-music')
-conflicts=('gxde-music')
+provides=("gxde-music-git=$pkgver")
+conflicts=('gxde-music-git')
+replaces=('gxde-music-git')
 source=()
 sha512sums=()
 
